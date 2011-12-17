@@ -17,13 +17,14 @@
 @synthesize account = _account;
 @synthesize timeline = _timeline;
 
+/*
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
     }
     return self;
-}
+}*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -174,15 +175,17 @@
     //UIImageView *cellImage = (UIImageView *)[cell viewWithTag:1];
     //[cellImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row]]];
     
+    /*
     UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:2];
     [cellLabel1 setText:[tweet valueForKeyPath:@"user.name"]];
     
     UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:3];
     [cellLabel2 setText:[tweet objectForKey:@"text"]];
+     */
     
 
-    //cell.textLabel.text = [tweet objectForKey:@"text"];
-    //cell.detailTextLabel.text = [tweet valueForKeyPath:@"user.name"];
+    cell.textLabel.text = [tweet objectForKey:@"text"];
+    cell.detailTextLabel.text = [tweet valueForKeyPath:@"user.name"];
     
     return cell;
 }
