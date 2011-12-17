@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		794C015A149CAABF0014FF25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0159149CAABF0014FF25 /* UIKit.framework */; };
+		794C015C149CAABF0014FF25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C015B149CAABF0014FF25 /* Foundation.framework */; };
+		794C015E149CAABF0014FF25 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C015D149CAABF0014FF25 /* CoreGraphics.framework */; };
+		794C0164149CAABF0014FF25 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 794C0162149CAABF0014FF25 /* InfoPlist.strings */; };
+		794C0166149CAABF0014FF25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0165149CAABF0014FF25 /* main.m */; };
+		794C016A149CAABF0014FF25 /* ZoeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0169149CAABF0014FF25 /* ZoeAppDelegate.m */; };
+		794C016D149CAABF0014FF25 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794C016B149CAABF0014FF25 /* MainStoryboard.storyboard */; };
+		794C0170149CAABF0014FF25 /* ZoeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C016F149CAABF0014FF25 /* ZoeViewController.m */; };
+		794C0180149CACE90014FF25 /* ZoeAccountsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C017F149CACE90014FF25 /* ZoeAccountsListViewController.m */; };
+		794C0182149CAF510014FF25 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0181149CAF510014FF25 /* Accounts.framework */; };
+		794C0184149CAF5A0014FF25 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0183149CAF5A0014FF25 /* Twitter.framework */; };
+		794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0187149CAFC40014FF25 /* ZoeListViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		794C0155149CAABF0014FF25 /* Twizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twizza.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		794C0159149CAABF0014FF25 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		794C015B149CAABF0014FF25 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		794C015D149CAABF0014FF25 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		794C0161149CAABF0014FF25 /* Twizza-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Twizza-Info.plist"; sourceTree = "<group>"; };
+		794C0163149CAABF0014FF25 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		794C0165149CAABF0014FF25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		794C0167149CAABF0014FF25 /* Twizza-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twizza-Prefix.pch"; sourceTree = "<group>"; };
+		794C0168149CAABF0014FF25 /* ZoeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoeAppDelegate.h; sourceTree = "<group>"; };
+		794C0169149CAABF0014FF25 /* ZoeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoeAppDelegate.m; sourceTree = "<group>"; };
+		794C016C149CAABF0014FF25 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		794C016E149CAABF0014FF25 /* ZoeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoeViewController.h; sourceTree = "<group>"; };
+		794C016F149CAABF0014FF25 /* ZoeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoeViewController.m; sourceTree = "<group>"; };
+		794C017E149CACE90014FF25 /* ZoeAccountsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeAccountsListViewController.h; sourceTree = "<group>"; };
+		794C017F149CACE90014FF25 /* ZoeAccountsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeAccountsListViewController.m; sourceTree = "<group>"; };
+		794C0181149CAF510014FF25 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		794C0183149CAF5A0014FF25 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		794C0186149CAFC40014FF25 /* ZoeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeListViewController.h; sourceTree = "<group>"; };
+		794C0187149CAFC40014FF25 /* ZoeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeListViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		794C0152149CAABF0014FF25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794C015A149CAABF0014FF25 /* UIKit.framework in Frameworks */,
+				794C0182149CAF510014FF25 /* Accounts.framework in Frameworks */,
+				794C0184149CAF5A0014FF25 /* Twitter.framework in Frameworks */,
+				794C015C149CAABF0014FF25 /* Foundation.framework in Frameworks */,
+				794C015E149CAABF0014FF25 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		794C014A149CAABF0014FF25 = {
+			isa = PBXGroup;
+			children = (
+				794C015F149CAABF0014FF25 /* Twizza */,
+				794C0158149CAABF0014FF25 /* Frameworks */,
+				794C0156149CAABF0014FF25 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		794C0156149CAABF0014FF25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				794C0155149CAABF0014FF25 /* Twizza.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		794C0158149CAABF0014FF25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				794C0183149CAF5A0014FF25 /* Twitter.framework */,
+				794C0181149CAF510014FF25 /* Accounts.framework */,
+				794C0159149CAABF0014FF25 /* UIKit.framework */,
+				794C015B149CAABF0014FF25 /* Foundation.framework */,
+				794C015D149CAABF0014FF25 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		794C015F149CAABF0014FF25 /* Twizza */ = {
+			isa = PBXGroup;
+			children = (
+				794C0185149CAFA00014FF25 /* Controller */,
+				794C0168149CAABF0014FF25 /* ZoeAppDelegate.h */,
+				794C0169149CAABF0014FF25 /* ZoeAppDelegate.m */,
+				794C016B149CAABF0014FF25 /* MainStoryboard.storyboard */,
+				794C016E149CAABF0014FF25 /* ZoeViewController.h */,
+				794C016F149CAABF0014FF25 /* ZoeViewController.m */,
+				794C0160149CAABF0014FF25 /* Supporting Files */,
+			);
+			path = Twizza;
+			sourceTree = "<group>";
+		};
+		794C0160149CAABF0014FF25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				794C0161149CAABF0014FF25 /* Twizza-Info.plist */,
+				794C0162149CAABF0014FF25 /* InfoPlist.strings */,
+				794C0165149CAABF0014FF25 /* main.m */,
+				794C0167149CAABF0014FF25 /* Twizza-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		794C0185149CAFA00014FF25 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				794C017E149CACE90014FF25 /* ZoeAccountsListViewController.h */,
+				794C017F149CACE90014FF25 /* ZoeAccountsListViewController.m */,
+				794C0186149CAFC40014FF25 /* ZoeListViewController.h */,
+				794C0187149CAFC40014FF25 /* ZoeListViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		794C0154149CAABF0014FF25 /* Twizza */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 794C0173149CAABF0014FF25 /* Build configuration list for PBXNativeTarget "Twizza" */;
+			buildPhases = (
+				794C0151149CAABF0014FF25 /* Sources */,
+				794C0152149CAABF0014FF25 /* Frameworks */,
+				794C0153149CAABF0014FF25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Twizza;
+			productName = Twizza;
+			productReference = 794C0155149CAABF0014FF25 /* Twizza.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		794C014C149CAABF0014FF25 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 794C014F149CAABF0014FF25 /* Build configuration list for PBXProject "Twizza" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 794C014A149CAABF0014FF25;
+			productRefGroup = 794C0156149CAABF0014FF25 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				794C0154149CAABF0014FF25 /* Twizza */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		794C0153149CAABF0014FF25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794C0164149CAABF0014FF25 /* InfoPlist.strings in Resources */,
+				794C016D149CAABF0014FF25 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		794C0151149CAABF0014FF25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				794C0166149CAABF0014FF25 /* main.m in Sources */,
+				794C016A149CAABF0014FF25 /* ZoeAppDelegate.m in Sources */,
+				794C0170149CAABF0014FF25 /* ZoeViewController.m in Sources */,
+				794C0180149CACE90014FF25 /* ZoeAccountsListViewController.m in Sources */,
+				794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		794C0162149CAABF0014FF25 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				794C0163149CAABF0014FF25 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		794C016B149CAABF0014FF25 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				794C016C149CAABF0014FF25 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		794C0171149CAABF0014FF25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		794C0172149CAABF0014FF25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		794C0174149CAABF0014FF25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Twizza/Twizza-Prefix.pch";
+				INFOPLIST_FILE = "Twizza/Twizza-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		794C0175149CAABF0014FF25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Twizza/Twizza-Prefix.pch";
+				INFOPLIST_FILE = "Twizza/Twizza-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		794C014F149CAABF0014FF25 /* Build configuration list for PBXProject "Twizza" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794C0171149CAABF0014FF25 /* Debug */,
+				794C0172149CAABF0014FF25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		794C0173149CAABF0014FF25 /* Build configuration list for PBXNativeTarget "Twizza" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				794C0174149CAABF0014FF25 /* Debug */,
+				794C0175149CAABF0014FF25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 794C014C149CAABF0014FF25 /* Project object */;
+}
