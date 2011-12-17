@@ -14,5 +14,5 @@
 build/*
 *.xcworkspace*
 *.xcuserdata*
+*.xcuserdata
 *~
-*/xcuserdata/*
