@@ -13,9 +13,10 @@
 
 @interface ZoeListViewController : UITableViewController //<TweetComposeViewControllerDelegate>
 {
+    /*
     IBOutlet UIImageView *profileImage;
     IBOutlet UILabel *screenNameLable;
-    IBOutlet UILabel *tweetContent;
+    IBOutlet UILabel *tweetContent; */
 }
 
 @property (strong, nonatomic) ACAccount *account;

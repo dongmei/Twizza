@@ -26,15 +26,6 @@
     return self;
 }*/
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-
-    if (self) {
-    }
-    return self;
-}
-
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -169,7 +160,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"CellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -184,15 +175,24 @@
     //UIImageView *cellImage = (UIImageView *)[cell viewWithTag:1];
     //[cellImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row]]];
     
-    UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:1];
-    //[cellLabel1 setText:[tweet valueForKeyPath:@"user.name"]];
-    cellLabel1.text = [tweet valueForKeyPath:@"user.name"];
+    if (cell != nil){
+        NSLog(@"nt nil");
+    }
+    UILabel *cellLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+//    UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:22];
+    if (cellLabel1 != nil)
+        [cellLabel1 setText:[tweet valueForKeyPath:@"user.name"]];
     
-    UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:2];
-    [cellLabel2 setText:[tweet objectForKey:@"text"]];
-     
+    //cellLabel1.text = [tweet valueForKeyPath:@"user.name"];
+   
+    cellLabel1.text = @"HI";
+    [cell addSubview:cellLabel1];
     
-
+    //UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:22];
+    //[cellLabel2 setText:[tweet objectForKey:@"text"]];
+    
+    
+    
     //cell.textLabel.text = [tweet objectForKey:@"text"];
     //cell.detailTextLabel.text = [tweet valueForKeyPath:@"user.name"];
     
