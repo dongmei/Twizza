@@ -32,8 +32,6 @@
         _usernameCache = [[NSCache alloc] init];
         [_usernameCache setName:@"TWUsernameCache"];
         [self fetchData];
-        NSLog(@"finish init AccountsListViewController");
-
     }
     return self;
 }
