@@ -37,7 +37,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKn-dG-01u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="MYd-3Q-F02" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Upp-pN-vWB">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -69,7 +69,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Hoy-Ba-g8b" kind="push" id="taX-2A-65x"/>
+                                    <segue destination="Hoy-Ba-g8b" kind="push" identifier="ShowTweetLists" id="taX-2A-65x"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -81,39 +81,35 @@
                     <navigationItem key="navigationItem" title="Accounts" id="eTj-sz-n0R"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="656" y="103"/>
+            <point key="canvasLocation" x="692" y="158"/>
         </scene>
         <scene sceneID="57R-3T-EmJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PcG-Rp-6KF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Hoy-Ba-g8b" customClass="ZoeListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="119" sectionHeaderHeight="22" sectionFooterHeight="22" id="bT8-5F-m4a">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bT8-5F-m4a">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="119" id="qVU-Nr-xSp">
-                                <rect key="frame" x="0.0" y="22" width="320" height="119"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="119" id="qVU-Nr-xSp">
+                                <rect key="frame" x="0.0" y="46" width="320" height="121"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+                                    <rect key="frame" x="10" y="1" width="300" height="118"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" id="dFN-EH-PBV">
-                                            <rect key="frame" x="6" y="7" width="47" height="47"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Name" lineBreakMode="tailTruncation" minimumFontSize="10" id="Orc-Ok-YZw">
-                                            <rect key="frame" x="73" y="7" width="46" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Name" lineBreakMode="tailTruncation" minimumFontSize="10" id="Orc-Ok-YZw">
+                                            <rect key="frame" x="10" y="7" width="46" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Tweet content" lineBreakMode="tailTruncation" minimumFontSize="10" id="dWh-rD-BwO">
-                                            <rect key="frame" x="73" y="36" width="234" height="77"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Tweet Content" lineBreakMode="tailTruncation" minimumFontSize="10" id="gWl-0a-iZY">
+                                            <rect key="frame" x="10" y="36" width="270" height="73"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -130,7 +126,7 @@
                     <navigationItem key="navigationItem" title="Full List" id="aB3-gY-ssQ"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1114" y="114"/>
+            <point key="canvasLocation" x="1193" y="158"/>
         </scene>
         <scene sceneID="5yx-CG-Res">
             <objects>
@@ -156,6 +152,11 @@
         </class>
         <class className="ZoeListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="profileImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tweetContent" candidateClass="UILabel"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

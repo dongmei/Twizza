@@ -26,6 +26,15 @@
     return self;
 }*/
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+
+    if (self) {
+    }
+    return self;
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -164,7 +173,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -175,17 +184,17 @@
     //UIImageView *cellImage = (UIImageView *)[cell viewWithTag:1];
     //[cellImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row]]];
     
-    /*
-    UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:2];
-    [cellLabel1 setText:[tweet valueForKeyPath:@"user.name"]];
+    UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:1];
+    //[cellLabel1 setText:[tweet valueForKeyPath:@"user.name"]];
+    cellLabel1.text = [tweet valueForKeyPath:@"user.name"];
     
-    UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:3];
+    UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:2];
     [cellLabel2 setText:[tweet objectForKey:@"text"]];
-     */
+     
     
 
-    cell.textLabel.text = [tweet objectForKey:@"text"];
-    cell.detailTextLabel.text = [tweet valueForKeyPath:@"user.name"];
+    //cell.textLabel.text = [tweet objectForKey:@"text"];
+    //cell.detailTextLabel.text = [tweet valueForKeyPath:@"user.name"];
     
     return cell;
 }
