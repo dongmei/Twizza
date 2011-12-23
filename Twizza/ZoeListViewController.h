@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
-//#import "ZoeTweetComposeViewController.h"
+#import "ZoeTweetComposeViewController.h"
 
 @interface ZoeListViewController : UITableViewController //<TweetComposeViewControllerDelegate>
 {
@@ -21,5 +21,6 @@
 
 @property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) id timeline;
+
 
 @end

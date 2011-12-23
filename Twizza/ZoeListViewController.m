@@ -12,6 +12,21 @@
 - (void)fetchData;
 @end
 
+@interface UILabel (BPExtensions)
+- (void)sizeToFitFixedWidth:(CGFloat)fixedWidth;
+@end
+
+
+@implementation UILabel (BPExtensions)
+- (void)sizeToFitFixedWidth:(CGFloat)fixedWidth
+{
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, fixedWidth, 20);
+    self.lineBreakMode = UILineBreakModeWordWrap;
+    self.numberOfLines = 0;
+    //[self sizeToFit];
+}
+@end
+
 @implementation ZoeListViewController
 
 @synthesize account = _account;
@@ -26,6 +41,8 @@
     return self;
 }*/
 
+
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -38,17 +55,28 @@
 
 - (void)fetchData
 {
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setObject:@"1" forKey:@"include_entities"];//get all entities for each tweet
+    
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/home_timeline.json"];
     TWRequest *request = [[TWRequest alloc] initWithURL:url 
-                                             parameters:nil 
+                                             parameters:param 
                                           requestMethod:TWRequestMethodGET];
     [request setAccount:self.account];    
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if ([urlResponse statusCode] == 200) {
             NSError *jsonError = nil;
             id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+            
             if (jsonResult != nil) {
                 self.timeline = jsonResult;
+                
+                NSArray *arr = (NSArray*)self.timeline;
+                NSDictionary *dict = [arr objectAtIndex:0];
+                for (NSString *k in [dict allKeys]){
+                    NSLog(@"%@",k);
+                }
+                
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });                
@@ -66,12 +94,12 @@
     
 }
 
-/*
+
  #pragma mark - Compose Tweet
 
 - (void)composeTweet
 {
-    TweetComposeViewController *tweetComposeViewController = [[TweetComposeViewController alloc] init];
+    ZoeTweetComposeViewController *tweetComposeViewController = [[ZoeTweetComposeViewController alloc] init];
     tweetComposeViewController.account = self.account;
     tweetComposeViewController.tweetComposeDelegate = self;
     [self presentViewController:tweetComposeViewController animated:YES completion:nil];
@@ -83,11 +111,10 @@
     //    [self presentModalViewController:tweetComposeViewController animated:YES];
 }
 
-- (void)tweetComposeViewController:(TweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result {
+- (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result {
     [self dismissModalViewControllerAnimated:YES];
     [self fetchData];
 }
-*/
 
 #pragma mark - View lifecycle
 
@@ -108,7 +135,7 @@
     UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
                                                                              target:self 
                                                                              action:@selector(fetchData)];
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refresh, nil];
+    //self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refresh, nil];
 }
 
 - (void)viewDidUnload
@@ -146,6 +173,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -170,23 +198,47 @@
     // Configure the cell...
     // Get the cell label using its tag and set it
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
-    // NSLog(@"Tweet at index %d is %@", [indexPath row], tweet);
-    
-    //UIImageView *cellImage = (UIImageView *)[cell viewWithTag:1];
-    //[cellImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", indexPath.row]]];
     
     if (cell != nil){
         NSLog(@"nt nil");
     }
-    UILabel *cellLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
+    
+    
+    UILabel *cellNameLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 0, 260, 50)];
+    [cell addSubview:cellNameLabel];
+    [cellNameLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
+    cellNameLabel.numberOfLines = 1;//max of lines
+    [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
+    //NSLog(@"%@",cellNameLabel.text);
+    //[cellNameLabel sizeToFitFixedWidth:260];    
+    
+    UILabel *cellContentLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 50, 260, 50)];
+    [cell addSubview:cellContentLabel];
+    [cellContentLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
+    cellContentLabel.numberOfLines = 5;//max of lines
+    [cellContentLabel setMinimumFontSize:10];
+    [cellContentLabel setText:[tweet objectForKey:@"text"]];
+    //[cellContentLabel setText:[tweet valueForKeyPath:@"user.profile_image_url"]];
+    //NSLog(@"%@",cellContentLabel.text);
+    //cellContentLabel.frame = CGRectMake(0, 0, 300, 110);
+    //CGRect bounds = CGRectMake(0, 0, 256, 300.0);
+    //CGRect result = [cellContentLabel textRectForBounds:bounds limitedToNumberOfLines:10];
+	//CGFloat h = result.size.height;
+    //[cellContentLabel sizeToFitFixedWidth:260];
+
+    
+    //if (cellContentLabel != nil)
+      //  [cellContentLabel setText:[tweet objectForKey:@"text"]];
+    
+    
+    
 //    UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:22];
-    if (cellLabel1 != nil)
-        [cellLabel1 setText:[tweet valueForKeyPath:@"user.name"]];
     
     //cellLabel1.text = [tweet valueForKeyPath:@"user.name"];
    
-    cellLabel1.text = @"HI";
-    [cell addSubview:cellLabel1];
+    //cellLabel1.text = @"HI";
+   
+    //[cell addSubview:cellContentLabel];
     
     //UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:22];
     //[cellLabel2 setText:[tweet objectForKey:@"text"]];
@@ -200,6 +252,12 @@
 }
 
 #pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

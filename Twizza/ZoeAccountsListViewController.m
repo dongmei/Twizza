@@ -48,10 +48,12 @@
 - (void)fetchData
 {
     NSLog(@"fetch account");
-    if (_accountStore == nil) {    
+    if (_accountStore == nil) { 
+        //to obtain the account instance for the users twitter account
         self.accountStore = [[ACAccountStore alloc] init];
         if (_accounts == nil) {
             ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+            //Request access from the user for access to his Twitter accounts
             [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) {
                 if(granted) {
                     self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];                    

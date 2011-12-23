@@ -19,6 +19,7 @@
 		794C0182149CAF510014FF25 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0181149CAF510014FF25 /* Accounts.framework */; };
 		794C0184149CAF5A0014FF25 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0183149CAF5A0014FF25 /* Twitter.framework */; };
 		794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0187149CAFC40014FF25 /* ZoeListViewController.m */; };
+		79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		794C0183149CAF5A0014FF25 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		794C0186149CAFC40014FF25 /* ZoeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeListViewController.h; sourceTree = "<group>"; };
 		794C0187149CAFC40014FF25 /* ZoeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeListViewController.m; sourceTree = "<group>"; };
+		79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetComposeViewController.h; sourceTree = "<group>"; };
+		79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		792711C5149F365B00CB36A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		794C014A149CAABF0014FF25 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		794C015F149CAABF0014FF25 /* Twizza */ = {
 			isa = PBXGroup;
 			children = (
+				792711C5149F365B00CB36A3 /* View */,
 				794C0185149CAFA00014FF25 /* Controller */,
 				794C0168149CAABF0014FF25 /* ZoeAppDelegate.h */,
 				794C0169149CAABF0014FF25 /* ZoeAppDelegate.m */,
@@ -120,6 +131,8 @@
 				794C017F149CACE90014FF25 /* ZoeAccountsListViewController.m */,
 				794C0186149CAFC40014FF25 /* ZoeListViewController.h */,
 				794C0187149CAFC40014FF25 /* ZoeListViewController.m */,
+				79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */,
+				79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -191,6 +204,7 @@
 				794C0170149CAABF0014FF25 /* ZoeViewController.m in Sources */,
 				794C0180149CACE90014FF25 /* ZoeAccountsListViewController.m in Sources */,
 				794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */,
+				79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +316,7 @@
 				794C0175149CAABF0014FF25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

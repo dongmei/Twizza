@@ -31,7 +31,7 @@
                     <tabBarItem key="tabBarItem" title="Topics" id="vMj-IZ-eXN"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1728" y="519"/>
+            <point key="canvasLocation" x="2254" y="519"/>
         </scene>
         <scene sceneID="yMJ-Zi-509">
             <objects>
@@ -88,15 +88,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PcG-Rp-6KF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Hoy-Ba-g8b" customClass="ZoeListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="L0U-Tt-gT7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" id="GxT-zS-hPv">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" rowHeight="100" id="GxT-zS-hPv">
+                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="22" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="UXb-gj-gxt">
@@ -116,10 +116,29 @@
                             <outlet property="delegate" destination="Hoy-Ba-g8b" id="YnM-2M-vlg"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Full List" id="aB3-gY-ssQ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1193" y="158"/>
+        </scene>
+        <scene sceneID="FQS-Y4-6dk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GFY-1V-osP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="n1n-zx-oir" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aFP-ig-r9g">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Tweet" id="xJj-UQ-ZTV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hzz-HV-JqV"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="if2-3T-t1n"/>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2139" y="170"/>
         </scene>
         <scene sceneID="5yx-CG-Res">
             <objects>
@@ -137,6 +156,24 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="224" y="170"/>
+        </scene>
+        <scene sceneID="DWm-Am-3HO">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mq7-v2-Py4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="3FH-OJ-a09" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="S5P-TB-cQk"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nlI-DG-vJi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n1n-zx-oir" kind="relationship" relationship="rootViewController" id="sbg-JQ-enB"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1613" y="170"/>
         </scene>
     </scenes>
     <classes>
