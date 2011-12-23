@@ -97,6 +97,17 @@
 
  #pragma mark - Compose Tweet
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure we're referring to the correct segue
+    if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {
+        
+        // Get reference to the destination view controller
+        ZoeTweetComposeViewController *vc = [segue destinationViewController];
+        [self.navigationController pushViewController:vc animated:TRUE];
+    }
+}
+
 - (void)composeTweet
 {
     ZoeTweetComposeViewController *tweetComposeViewController = [[ZoeTweetComposeViewController alloc] init];
@@ -132,10 +143,11 @@
                                                                              target:self 
                                                                              action:@selector(composeTweet)];
      */
-    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
+    /*UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
                                                                              target:self 
                                                                              action:@selector(fetchData)];
-    //self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refresh, nil];
+     */
+    //self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:compose, nil];
 }
 
 - (void)viewDidUnload

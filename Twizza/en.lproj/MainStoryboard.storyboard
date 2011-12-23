@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Oqc-aE-qfG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GXp-vq-0Zl">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -31,7 +31,7 @@
                     <tabBarItem key="tabBarItem" title="Topics" id="vMj-IZ-eXN"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2254" y="519"/>
+            <point key="canvasLocation" x="4884" y="519"/>
         </scene>
         <scene sceneID="yMJ-Zi-509">
             <objects>
@@ -60,7 +60,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wrY-XA-Hov">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="zoeIdentifier" id="wrY-XA-Hov">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -69,7 +69,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Hoy-Ba-g8b" kind="push" identifier="ShowTweetLists" id="taX-2A-65x"/>
+                                    <segue destination="Zkr-x2-WSo" kind="push" identifier="ShowTweetLists" id="tia-JT-btu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -78,55 +78,48 @@
                             <outlet property="delegate" destination="3Uk-Fq-IbS" id="kka-J6-aqZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Accounts" id="eTj-sz-n0R"/>
+                    <navigationItem key="navigationItem" title="Accounts" id="eTj-sz-n0R">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="LAg-ER-dhv"/>
+                    </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="692" y="158"/>
+            <point key="canvasLocation" x="1218" y="158"/>
         </scene>
-        <scene sceneID="57R-3T-EmJ">
+        <scene sceneID="D91-48-hQd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PcG-Rp-6KF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Hoy-Ba-g8b" customClass="ZoeListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="L0U-Tt-gT7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zyg-bc-Efo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Zkr-x2-WSo" customClass="ZoeListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fsc-Ty-rn0">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" rowHeight="100" id="GxT-zS-hPv">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="d8g-WA-xaB">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="22" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="UXb-gj-gxt">
-                                            <rect key="frame" x="162" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Hoy-Ba-g8b" id="uKf-cr-uvR"/>
-                            <outlet property="delegate" destination="Hoy-Ba-g8b" id="YnM-2M-vlg"/>
+                            <outlet property="dataSource" destination="Zkr-x2-WSo" id="b26-5L-fhw"/>
+                            <outlet property="delegate" destination="Zkr-x2-WSo" id="UvC-Nn-LEB"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Full List" id="aB3-gY-ssQ"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" id="KvP-Ux-DIr">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="FHt-xG-TFC"/>
+                    </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1193" y="158"/>
+            <point key="canvasLocation" x="2030" y="150"/>
         </scene>
         <scene sceneID="FQS-Y4-6dk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFY-1V-osP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="n1n-zx-oir" sceneMemberID="viewController">
+                <viewController id="n1n-zx-oir" customClass="ZoeTweetComposeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aFP-ig-r9g">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -138,24 +131,7 @@
                     </navigationItem>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2139" y="170"/>
-        </scene>
-        <scene sceneID="5yx-CG-Res">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WOr-bD-BFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="Oqc-aE-qfG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="f1H-ut-hoN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="3Uk-Fq-IbS" kind="relationship" relationship="rootViewController" id="MEJ-F7-P3U"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="224" y="170"/>
+            <point key="canvasLocation" x="3609" y="158"/>
         </scene>
         <scene sceneID="DWm-Am-3HO">
             <objects>
@@ -173,7 +149,24 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1613" y="170"/>
+            <point key="canvasLocation" x="3163" y="150"/>
+        </scene>
+        <scene sceneID="P06-rs-cqS">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h37-7R-AGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="GXp-vq-0Zl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GjE-JS-gCq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3Uk-Fq-IbS" kind="relationship" relationship="rootViewController" id="aND-Jt-44u"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="692" y="158"/>
         </scene>
     </scenes>
     <classes>
@@ -182,6 +175,17 @@
         </class>
         <class className="ZoeListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeListViewController.h"/>
+        </class>
+        <class className="ZoeTweetComposeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeTweetComposeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="sendTweet:"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sendButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UINavigationItem"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

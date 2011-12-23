@@ -82,7 +82,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"zoeIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -147,13 +147,6 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    ZoeListViewController *tweetsListViewController = [[ZoeListViewController alloc] init];
-    tweetsListViewController.account = [self.accounts objectAtIndex:[indexPath row]];
-    [self.navigationController pushViewController:tweetsListViewController animated:TRUE];
-}
-
 
 
 // Do some customisation of our new view when a table item has been selected
@@ -164,15 +157,8 @@
         
         // Get reference to the destination view controller
         ZoeListViewController *vc = [segue destinationViewController];
-        
-        // get the selected index
-        NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-        
-        [vc setTitle:(NSString *)[self.accounts objectAtIndex:selectedIndex]];
-        
-        // Pass the name and index of our film
-        //[vc setSelectedItem:[NSString stringWithFormat:@"%@", [myData objectAtIndex:selectedIndex]]];
-        //[vc setSelectedIndex:selectedIndex];
+            //get the selected index
+        vc.account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     }
 }
 
