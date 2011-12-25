@@ -216,13 +216,12 @@
     }
     
     
+    /** Draw frame to make labels within the prototype cell
     UILabel *cellNameLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 0, 260, 50)];
     [cell addSubview:cellNameLabel];
     [cellNameLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
     cellNameLabel.numberOfLines = 1;//max of lines
     [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
-    //NSLog(@"%@",cellNameLabel.text);
-    //[cellNameLabel sizeToFitFixedWidth:260];    
     
     UILabel *cellContentLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 50, 260, 50)];
     [cell addSubview:cellContentLabel];
@@ -231,34 +230,20 @@
     [cellContentLabel setMinimumFontSize:10];
     [cellContentLabel setText:[tweet objectForKey:@"text"]];
     //[cellContentLabel setText:[tweet valueForKeyPath:@"user.profile_image_url"]];
-    //NSLog(@"%@",cellContentLabel.text);
-    //cellContentLabel.frame = CGRectMake(0, 0, 300, 110);
-    //CGRect bounds = CGRectMake(0, 0, 256, 300.0);
-    //CGRect result = [cellContentLabel textRectForBounds:bounds limitedToNumberOfLines:10];
-	//CGFloat h = result.size.height;
-    //[cellContentLabel sizeToFitFixedWidth:260];
+     */
+    
+    //Use viewWithTag to display tweets
+    UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
+    [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
+    
+    UILabel *cellContentLabel = (UILabel *)[cell viewWithTag:2];
+    [cellContentLabel setText:[tweet objectForKey:@"text"]];
 
-    
-    //if (cellContentLabel != nil)
-      //  [cellContentLabel setText:[tweet objectForKey:@"text"]];
-    
-    
-    
-//    UILabel *cellLabel1 = (UILabel *)[cell viewWithTag:22];
-    
-    //cellLabel1.text = [tweet valueForKeyPath:@"user.name"];
-   
-    //cellLabel1.text = @"HI";
-   
-    //[cell addSubview:cellContentLabel];
-    
-    //UILabel *cellLabel2 = (UILabel *)[cell viewWithTag:22];
-    //[cellLabel2 setText:[tweet objectForKey:@"text"]];
-    
-    
-    
-    //cell.textLabel.text = [tweet objectForKey:@"text"];
-    //cell.detailTextLabel.text = [tweet valueForKeyPath:@"user.name"];
+    UIImageView *cellPofileImage = (UIImageView *)[cell viewWithTag:3];
+    NSString *imageURLString = [tweet valueForKeyPath:@"user.profile_image_url"];
+    NSURL *imageURL = [NSURL URLWithString:imageURLString];
+    NSData *profileImageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+    [cellPofileImage setImage:[UIImage imageWithData:profileImageData]];
     
     return cell;
 }
