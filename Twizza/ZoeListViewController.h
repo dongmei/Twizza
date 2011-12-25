@@ -22,5 +22,7 @@
 @property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) id timeline;
 
+- (IBAction)sendNewTweet:(id)sender;
+
 
 @end

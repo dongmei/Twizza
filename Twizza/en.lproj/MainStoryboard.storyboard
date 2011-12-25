@@ -31,7 +31,7 @@
                     <tabBarItem key="tabBarItem" title="Topics" id="vMj-IZ-eXN"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="4884" y="519"/>
+            <point key="canvasLocation" x="5410" y="519"/>
         </scene>
         <scene sceneID="yMJ-Zi-509">
             <objects>
@@ -130,46 +130,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="KvP-Ux-DIr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="FHt-xG-TFC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="FHt-xG-TFC">
+                            <connections>
+                                <action selector="sendNewTweet:" destination="Zkr-x2-WSo" id="8x0-xB-M61"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2030" y="150"/>
-        </scene>
-        <scene sceneID="FQS-Y4-6dk">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GFY-1V-osP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="n1n-zx-oir" customClass="ZoeTweetComposeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aFP-ig-r9g">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="New Tweet" id="xJj-UQ-ZTV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hzz-HV-JqV"/>
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="if2-3T-t1n"/>
-                    </navigationItem>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3609" y="158"/>
-        </scene>
-        <scene sceneID="DWm-Am-3HO">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mq7-v2-Py4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="3FH-OJ-a09" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="S5P-TB-cQk"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nlI-DG-vJi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="n1n-zx-oir" kind="relationship" relationship="rootViewController" id="sbg-JQ-enB"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="3163" y="150"/>
+            <point key="canvasLocation" x="2038" y="158"/>
         </scene>
         <scene sceneID="P06-rs-cqS">
             <objects>
@@ -195,16 +164,8 @@
         </class>
         <class className="ZoeListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeListViewController.h"/>
-        </class>
-        <class className="ZoeTweetComposeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeTweetComposeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="sendTweet:"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="titleView" candidateClass="UINavigationItem"/>
+                <relationship kind="action" name="sendNewTweet:"/>
             </relationships>
         </class>
     </classes>

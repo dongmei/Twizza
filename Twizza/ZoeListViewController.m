@@ -97,6 +97,39 @@
 
  #pragma mark - Compose Tweet
 
+- (IBAction)sendNewTweet:(id)sender
+{
+    if ([TWTweetComposeViewController canSendTweet])
+    {
+        TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+        [tweetSheet setInitialText:@"Tweeting from iOS 5 By Tutorials! :)"];
+        
+        /*
+         if (self.imageString)
+         {
+         [tweetSheet addImage:[UIImage imageNamed:self.imageString]];
+         }
+         
+         if (self.urlString)
+         {
+         [tweetSheet addURL:[NSURL URLWithString:self.urlString]];
+         }*/
+        
+	    [self presentModalViewController:tweetSheet animated:YES];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" 
+                                                            message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup" 
+                                                           delegate:self 
+                                                  cancelButtonTitle:@"OK" 
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    
+}
+
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure we're referring to the correct segue
@@ -126,6 +159,8 @@
     [self dismissModalViewControllerAnimated:YES];
     [self fetchData];
 }
+ 
+*/
 
 #pragma mark - View lifecycle
 
@@ -207,13 +242,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-    // Get the cell label using its tag and set it
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
     
+    /*
     if (cell != nil){
         NSLog(@"nt nil");
-    }
+    }*/
     
     
     /** Draw frame to make labels within the prototype cell
