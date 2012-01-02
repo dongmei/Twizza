@@ -31,7 +31,7 @@
                     <tabBarItem key="tabBarItem" title="Topics" id="vMj-IZ-eXN"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="5410" y="519"/>
+            <point key="canvasLocation" x="5936" y="519"/>
         </scene>
         <scene sceneID="yMJ-Zi-509">
             <objects>
@@ -133,12 +133,38 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="FHt-xG-TFC">
                             <connections>
                                 <action selector="sendNewTweet:" destination="Zkr-x2-WSo" id="8x0-xB-M61"/>
+                                <segue destination="wBe-ok-nBr" kind="push" identifier="ComposeTweet" id="yR7-Co-fUG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2038" y="158"/>
+        </scene>
+        <scene sceneID="4C3-kb-qZc">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="khQ-1v-T9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="1ag-6o-31z" customClass="ZoeTweetComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vR4-h7-qar">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Tweet" id="iI3-Mo-0Bl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Hds-ho-sHD">
+                            <connections>
+                                <action selector="cancel:" destination="1ag-6o-31z" id="thn-lF-nDx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="cwl-dC-yLO">
+                            <connections>
+                                <action selector="sendTweet:" destination="1ag-6o-31z" id="cCk-zV-e6R"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3094" y="158"/>
         </scene>
         <scene sceneID="P06-rs-cqS">
             <objects>
@@ -157,6 +183,24 @@
             </objects>
             <point key="canvasLocation" x="692" y="158"/>
         </scene>
+        <scene sceneID="rAi-pp-JwW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ic-vB-LGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="wBe-ok-nBr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="3s5-7a-JBg"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FBJ-2H-jxq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1ag-6o-31z" kind="relationship" relationship="rootViewController" id="NDw-r9-ndz"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2568" y="158"/>
+        </scene>
     </scenes>
     <classes>
         <class className="ZoeAccountsListViewController" superclassName="UITableViewController">
@@ -166,6 +210,17 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="sendNewTweet:"/>
+            </relationships>
+        </class>
+        <class className="ZoeTweetComposeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeTweetComposeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="sendTweet:"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sendButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
     </classes>

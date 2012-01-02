@@ -97,50 +97,21 @@
 
  #pragma mark - Compose Tweet
 
-- (IBAction)sendNewTweet:(id)sender
-{
-    if ([TWTweetComposeViewController canSendTweet])
-    {
-        TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
-        [tweetSheet setInitialText:@"Tweeting from iOS 5 By Tutorials! :)"];
-        
-        /*
-         if (self.imageString)
-         {
-         [tweetSheet addImage:[UIImage imageNamed:self.imageString]];
-         }
-         
-         if (self.urlString)
-         {
-         [tweetSheet addURL:[NSURL URLWithString:self.urlString]];
-         }*/
-        
-	    [self presentModalViewController:tweetSheet animated:YES];
-    }
-    else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" 
-                                                            message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup" 
-                                                           delegate:self 
-                                                  cancelButtonTitle:@"OK" 
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    
-}
-
-/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {
         
         // Get reference to the destination view controller
-        ZoeTweetComposeViewController *vc = [segue destinationViewController];
-        [self.navigationController pushViewController:vc animated:TRUE];
+        ZoeTweetComposeViewController *vc;
+        NSLog(@"before account");
+        vc.account = self.account;
+        vc.tweetComposeDelegate = self;
+        vc = [segue destinationViewController];
+        NSLog(@"after account");
     }
 }
-
+/*
 - (void)composeTweet
 {
     ZoeTweetComposeViewController *tweetComposeViewController = [[ZoeTweetComposeViewController alloc] init];

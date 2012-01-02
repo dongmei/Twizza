@@ -28,13 +28,16 @@ typedef enum TweetComposeResult TweetComposeResult;
 
 @property (strong, nonatomic) ACAccount *account;
 
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sendButton;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UINavigationItem *titleView;
 
+
 - (IBAction)sendTweet:(id)sender;
 - (IBAction)cancel:(id)sender;
+
 
 @property (nonatomic, assign) id<ZoeTweetComposeViewControllerDelegate> tweetComposeDelegate; 
 

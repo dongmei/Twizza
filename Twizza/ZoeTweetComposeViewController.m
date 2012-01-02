@@ -10,6 +10,7 @@
 
 @implementation ZoeTweetComposeViewController
 
+
 @synthesize account = _account;
 @synthesize tweetComposeDelegate = _tweetComposeDelegate;
 
@@ -31,7 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.titleView.title = [NSString stringWithFormat:@"@%@", self.account.username];    
+    //self.titleView.title = [NSString stringWithFormat:@"@%@", self.account.username];    
     [textView setKeyboardType:UIKeyboardTypeTwitter];
     [textView becomeFirstResponder];
 }
@@ -41,7 +42,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
-
+/*
 - (void)viewDidUnload
 {
     [self setCloseButton:nil];
@@ -51,7 +52,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
+}*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -59,24 +60,13 @@
 }
 
 #pragma mark - Actions
-
+/*
 - (IBAction)sendNewTweet:(id)sender
 {
     if ([TWTweetComposeViewController canSendTweet])
     {
         TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
         [tweetSheet setInitialText:@"Tweeting from iOS 5 By Tutorials! :)"];
-        
-        /*
-        if (self.imageString)
-        {
-            [tweetSheet addImage:[UIImage imageNamed:self.imageString]];
-        }
-        
-        if (self.urlString)
-        {
-            [tweetSheet addURL:[NSURL URLWithString:self.urlString]];
-        }*/
         
 	    [self presentModalViewController:tweetSheet animated:YES];
     }
@@ -90,7 +80,8 @@
         [alertView show];
     }
 
-}
+}*/
+
 
 - (IBAction)sendTweet:(id)sender 
 {
@@ -118,5 +109,6 @@
 {
     [self.tweetComposeDelegate tweetComposeViewController:self didFinishWithResult:TweetComposeResultCancelled];
 }
+
 
 @end

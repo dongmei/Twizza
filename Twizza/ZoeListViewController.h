@@ -12,17 +12,12 @@
 #import "ZoeTweetComposeViewController.h"
 
 @interface ZoeListViewController : UITableViewController //<TweetComposeViewControllerDelegate>
-{
-    /*
-    IBOutlet UIImageView *profileImage;
-    IBOutlet UILabel *screenNameLable;
-    IBOutlet UILabel *tweetContent; */
-}
+
 
 @property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) id timeline;
 
-- (IBAction)sendNewTweet:(id)sender;
+
 
 
 @end
