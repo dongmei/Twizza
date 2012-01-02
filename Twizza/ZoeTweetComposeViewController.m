@@ -41,6 +41,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    //self.navigationController.navigationItem.leftBarButtonItem.title = @"Cancel";
 }
 /*
 - (void)viewDidUnload
@@ -81,6 +82,10 @@
     }
 
 }*/
+
+-(IBAction)cancelBtnDidPressed:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 
 - (IBAction)sendTweet:(id)sender 

@@ -41,7 +41,9 @@
     return self;
 }*/
 
-
+- (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result{
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -104,10 +106,11 @@
         
         // Get reference to the destination view controller
         ZoeTweetComposeViewController *vc;
+        vc = [segue destinationViewController];
         NSLog(@"before account");
         vc.account = self.account;
         vc.tweetComposeDelegate = self;
-        vc = [segue destinationViewController];
+       
         NSLog(@"after account");
     }
 }

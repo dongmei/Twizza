@@ -11,7 +11,7 @@
 #import <Twitter/Twitter.h>
 #import "ZoeTweetComposeViewController.h"
 
-@interface ZoeListViewController : UITableViewController //<TweetComposeViewControllerDelegate>
+@interface ZoeListViewController : UITableViewController<ZoeTweetComposeViewControllerDelegate>
 
 
 @property (strong, nonatomic) ACAccount *account;
