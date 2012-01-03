@@ -95,12 +95,15 @@
     
     TWRequest *sendTweet = [[TWRequest alloc] 
                             initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/statuses/update.json"] 
-                            parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil]
+                            parameters:[NSDictionary dictionaryWithObject:status forKey:@"status"] 
                             requestMethod:TWRequestMethodPOST];
     
-     NSLog(@"Problem sending tweet: %@", status);
-    sendTweet.account = self.account;
+    NSLog(@"Problem sending tweet: %@", status);
+    [sendTweet setAccount:self.account];
+    NSLog(@"TWITTER USERNAME %@",[self.account username]);
+    
     [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        NSLog(@"Twitter response, HTTP response: %i", [urlResponse statusCode]);
         if ([urlResponse statusCode] == 200) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self.tweetComposeDelegate tweetComposeViewController:self didFinishWithResult:TweetComposeResultSent];

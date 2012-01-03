@@ -133,7 +133,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="FHt-xG-TFC">
                             <connections>
                                 <action selector="sendNewTweet:" destination="Zkr-x2-WSo" id="8x0-xB-M61"/>
-                                <segue destination="1ag-6o-31z" kind="modal" modalTransitionStyle="flipHorizontal" id="Ez7-Ng-EUA"/>
+                                <segue destination="1ag-6o-31z" kind="modal" identifier="ComposeTweet" modalTransitionStyle="flipHorizontal" id="Ez7-Ng-EUA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
