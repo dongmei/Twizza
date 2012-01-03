@@ -114,26 +114,21 @@
         NSLog(@"after account");
     }
 }
+
 /*
 - (void)composeTweet
 {
-    ZoeTweetComposeViewController *tweetComposeViewController = [[ZoeTweetComposeViewController alloc] init];
-    tweetComposeViewController.account = self.account;
-    tweetComposeViewController.tweetComposeDelegate = self;
-    [self presentViewController:tweetComposeViewController animated:YES completion:nil];
-    
-    //    TWTweetComposeViewController *tweetComposeViewController = [[TWTweetComposeViewController alloc] init];
-    //    [tweetComposeViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
-    //        [self dismissModalViewControllerAnimated:YES];
-    //    }];
-    //    [self presentModalViewController:tweetComposeViewController animated:YES];
+    TWTweetComposeViewController *tweetComposeViewController = [[TWTweetComposeViewController alloc] init];
+    [tweetComposeViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
+        [self dismissModalViewControllerAnimated:YES];
+    }];
+    [self presentModalViewController:tweetComposeViewController animated:YES];
 }
 
 - (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result {
     [self dismissModalViewControllerAnimated:YES];
     [self fetchData];
 }
- 
 */
 
 #pragma mark - View lifecycle

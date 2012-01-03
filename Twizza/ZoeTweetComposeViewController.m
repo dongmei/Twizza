@@ -14,10 +14,10 @@
 @synthesize account = _account;
 @synthesize tweetComposeDelegate = _tweetComposeDelegate;
 
-@synthesize closeButton;
-@synthesize sendButton;
+//@synthesize closeButton;
+//@synthesize sendButton;
 @synthesize textView;
-@synthesize titleView;
+//@synthesize titleView;
 
 
 - (void)didReceiveMemoryWarning
@@ -32,7 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //self.titleView.title = [NSString stringWithFormat:@"@%@", self.account.username];    
+    //self.titleView.title = [NSString stringWithFormat:@"Compose Tweet"];    
     [textView setKeyboardType:UIKeyboardTypeTwitter];
     [textView becomeFirstResponder];
 }
@@ -43,6 +43,7 @@
     // Do any additional setup after loading the view from its nib.
     //self.navigationController.navigationItem.leftBarButtonItem.title = @"Cancel";
 }
+
 /*
 - (void)viewDidUnload
 {
@@ -88,7 +89,7 @@
 }
 
 
-- (IBAction)sendTweet:(id)sender 
+- (IBAction)sendTweet1:(id)sender 
 {
     NSString *status = self.textView.text;
     
@@ -96,6 +97,8 @@
                             initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/statuses/update.json"] 
                             parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil]
                             requestMethod:TWRequestMethodPOST];
+    
+     NSLog(@"Problem sending tweet: %@", status);
     sendTweet.account = self.account;
     [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if ([urlResponse statusCode] == 200) {
@@ -109,11 +112,11 @@
     }];
 }
 
-
+/*
 - (IBAction)cancel:(id)sender
 {
     [self.tweetComposeDelegate tweetComposeViewController:self didFinishWithResult:TweetComposeResultCancelled];
-}
+}*/
 
 
 @end
