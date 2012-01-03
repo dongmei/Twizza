@@ -19,6 +19,7 @@
 		794C0182149CAF510014FF25 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0181149CAF510014FF25 /* Accounts.framework */; };
 		794C0184149CAF5A0014FF25 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0183149CAF5A0014FF25 /* Twitter.framework */; };
 		794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0187149CAFC40014FF25 /* ZoeListViewController.m */; };
+		79690B5314B34F8300905075 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79690B5214B34F8300905075 /* image1.png */; };
 		79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		794C0183149CAF5A0014FF25 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		794C0186149CAFC40014FF25 /* ZoeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeListViewController.h; sourceTree = "<group>"; };
 		794C0187149CAFC40014FF25 /* ZoeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeListViewController.m; sourceTree = "<group>"; };
+		79690B5214B34F8300905075 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image1.png; path = ../../../../Desktop/image1.png; sourceTree = "<group>"; };
 		79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetComposeViewController.h; sourceTree = "<group>"; };
 		79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 		794C0160149CAABF0014FF25 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79690B4F14B34F4600905075 /* Resources */,
 				794C0161149CAABF0014FF25 /* Twizza-Info.plist */,
 				794C0162149CAABF0014FF25 /* InfoPlist.strings */,
 				794C0165149CAABF0014FF25 /* main.m */,
@@ -135,6 +138,22 @@
 				79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		79690B4F14B34F4600905075 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79690B5114B34F5200905075 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		79690B5114B34F5200905075 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				79690B5214B34F8300905075 /* image1.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +208,7 @@
 			files = (
 				794C0164149CAABF0014FF25 /* InfoPlist.strings in Resources */,
 				794C016D149CAABF0014FF25 /* MainStoryboard.storyboard in Resources */,
+				79690B5314B34F8300905075 /* image1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

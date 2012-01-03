@@ -8,11 +8,19 @@
 
 #import "ZoeTweetComposeViewController.h"
 
-@implementation ZoeTweetComposeViewController
+@interface ZoeTweetComposeViewController ()
+@property (strong, nonatomic) UIImage *image;
+//@property (strong, nonatomic) NSString *url;
+//- (void)clearLabels;
+@end
 
+
+
+@implementation ZoeTweetComposeViewController
 
 @synthesize account = _account;
 @synthesize tweetComposeDelegate = _tweetComposeDelegate;
+@synthesize image = _image;
 
 //@synthesize closeButton;
 //@synthesize sendButton;
@@ -102,7 +110,19 @@
     [sendTweet setAccount:self.account];
     NSLog(@"TWITTER USERNAME %@",[self.account username]);
     
+    //add image
+    self.image = [UIImage imageNamed:@"image1.png"];
+    NSData *imageData = UIImagePNGRepresentation(self.image);
+    [sendTweet addMultiPartData:imageData withName:@"media[]" type:@"multipart/form-data"];
+    [sendTweet addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
+    
+    //add URL
+    
     [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        NSDictionary *dict = 
+		(NSDictionary *)[NSJSONSerialization 
+                         JSONObjectWithData:responseData options:0 error:nil];
+        NSLog(@"%@", dict);
         NSLog(@"Twitter response, HTTP response: %i", [urlResponse statusCode]);
         if ([urlResponse statusCode] == 200) {
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -113,6 +133,8 @@
             NSLog(@"Problem sending tweet: %@", error);
         }
     }];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 /*
