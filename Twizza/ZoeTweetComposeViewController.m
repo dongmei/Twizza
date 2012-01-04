@@ -102,7 +102,7 @@
     NSString *status = self.textView.text;
     NSString *urlRequestString;
     
-    //self.image =[UIImage imageNamed:@"image1.png"];
+    self.image =[UIImage imageNamed:@"image1.png"];
     
     if (self.image !=NULL)
         urlRequestString = @"https://upload.twitter.com/1/statuses/update_with_media.json";
@@ -131,11 +131,13 @@
         [sendTweet addMultiPartData:imageData withName:@"media[]" type:@"multipart/form-data"];
         [sendTweet addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
     
+    } 
+    
     [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        NSDictionary *dict = 
-		(NSDictionary *)[NSJSONSerialization 
-                         JSONObjectWithData:responseData options:0 error:nil];
-        NSLog(@"%@", dict);
+        //NSDictionary *dict = 
+		//(NSDictionary *)[NSJSONSerialization 
+        // JSONObjectWithData:responseData options:0 error:nil];
+        //NSLog(@"%@", dict);
         NSLog(@"Twitter response, HTTP response: %i", [urlResponse statusCode]);
         if ([urlResponse statusCode] == 200) {
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -146,20 +148,7 @@
             NSLog(@"Problem sending tweet: %@", error);
         }
     }];
-    } else{
-        //plain text 
-        [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-            NSLog(@"Twitter response, HTTP response: %i", [urlResponse statusCode]);
-            if ([urlResponse statusCode] == 200) {
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self.tweetComposeDelegate tweetComposeViewController:self didFinishWithResult:TweetComposeResultSent];
-                });
-            }
-            else {
-                NSLog(@"Problem sending tweet: %@", error);
-            }
-        }];
-    }
+
     
     
     [self dismissModalViewControllerAnimated:YES];
