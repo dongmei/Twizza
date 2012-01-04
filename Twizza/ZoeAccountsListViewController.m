@@ -146,19 +146,16 @@
 }
 
 #pragma mark - Table view delegate
-
-
-
 // Do some customisation of our new view when a table item has been selected
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"ShowTweetLists"]) {
         
         // Get reference to the destination view controller
         ZoeListViewController *vc = [segue destinationViewController];
-            //get the selected index
         vc.account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        
+        //NSLog(@"the vc.account is %@",vc.account);
     }
 }
 

@@ -21,7 +21,6 @@
 		794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0187149CAFC40014FF25 /* ZoeListViewController.m */; };
 		79690B5314B34F8300905075 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79690B5214B34F8300905075 /* image1.png */; };
 		79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */; };
-		79F153C014B40C4C0036944C /* ZoePhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F153BF14B40C4C0036944C /* ZoePhotoPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +46,6 @@
 		79690B5214B34F8300905075 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image1.png; path = ../../../../Desktop/image1.png; sourceTree = "<group>"; };
 		79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetComposeViewController.h; sourceTree = "<group>"; };
 		79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetComposeViewController.m; sourceTree = "<group>"; };
-		79F153BE14B40C4C0036944C /* ZoePhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoePhotoPickerViewController.h; sourceTree = "<group>"; };
-		79F153BF14B40C4C0036944C /* ZoePhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoePhotoPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +136,6 @@
 				794C0187149CAFC40014FF25 /* ZoeListViewController.m */,
 				79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */,
 				79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */,
-				79F153BE14B40C4C0036944C /* ZoePhotoPickerViewController.h */,
-				79F153BF14B40C4C0036944C /* ZoePhotoPickerViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -230,7 +225,6 @@
 				794C0180149CACE90014FF25 /* ZoeAccountsListViewController.m in Sources */,
 				794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */,
 				79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */,
-				79F153C014B40C4C0036944C /* ZoePhotoPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

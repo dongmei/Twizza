@@ -10,10 +10,7 @@
 
 @interface ZoeTweetComposeViewController ()
 @property (strong, nonatomic) UIImage *image;
-//@property (strong, nonatomic) NSString *url;
-//- (void)clearLabels;
 @end
-
 
 
 @implementation ZoeTweetComposeViewController
@@ -21,6 +18,8 @@
 @synthesize account = _account;
 @synthesize tweetComposeDelegate = _tweetComposeDelegate;
 @synthesize image = _image;
+@synthesize imageView = _imageView;
+@synthesize choosePhoto = _choosePhoto;
 
 //@synthesize closeButton;
 //@synthesize sendButton;
@@ -70,32 +69,27 @@
 }
 
 #pragma mark - Actions
-/*
-- (IBAction)sendNewTweet:(id)sender
-{
-    if ([TWTweetComposeViewController canSendTweet])
-    {
-        TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
-        [tweetSheet setInitialText:@"Tweeting from iOS 5 By Tutorials! :)"];
-        
-	    [self presentModalViewController:tweetSheet animated:YES];
-    }
-    else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" 
-                                                            message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup" 
-                                                           delegate:self 
-                                                  cancelButtonTitle:@"OK" 
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
 
-}*/
+-(IBAction) getPhoto:(id) sender {
+    NSLog(@"Press choosePhoto");
+	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+	picker.delegate = self;
+    
+    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+	
+    /*
+	if((UIButton *) sender == _choosePhoto) {
+		picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+	} else {
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+	}*/
+	
+	[self presentModalViewController:picker animated:YES];
+}
 
 -(IBAction)cancelBtnDidPressed:(id)sender{
     [self dismissModalViewControllerAnimated:YES];
 }
-
 
 - (IBAction)sendTweet1:(id)sender 
 {
@@ -117,12 +111,9 @@
                                 //parameters:[NSDictionary dictionaryWithObject:status forKey:@"status"] 
                                 requestMethod:TWRequestMethodPOST];
 
-
-        
-    NSLog(@"Tweet content: %@", status);
     [sendTweet setAccount:self.account];
-    NSLog(@"TWITTER USERNAME %@",[self.account username]);
-    NSLog(@"%@", self.image);
+    //NSLog(@"TWITTER USERNAME %@",[self.account username]);
+    //NSLog(@"%@", self.image);
     
     if (self.image != NULL) {
         //add image
@@ -152,6 +143,12 @@
     
     
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSLog(@"Open photo library");
+	[picker dismissModalViewControllerAnimated:YES];
+	imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
 }
 
 /*

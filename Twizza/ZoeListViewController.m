@@ -76,7 +76,7 @@
                 NSArray *arr = (NSArray*)self.timeline;
                 NSDictionary *dict = [arr objectAtIndex:0];
                 for (NSString *k in [dict allKeys]){
-                    NSLog(@"%@",k);
+                    //NSLog(@"%@",k);
                 }
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{
@@ -107,11 +107,10 @@
         // Get reference to the destination view controller
         ZoeTweetComposeViewController *vc;
         vc = [segue destinationViewController];
-        NSLog(@"before account");
+        
+        //NSLog(@"List View Controller, self.account is %@", self.account);
         vc.account = self.account;
         vc.tweetComposeDelegate = self;
-       
-        NSLog(@"after account");
     }
 }
 
