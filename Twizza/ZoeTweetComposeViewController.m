@@ -100,23 +100,36 @@
 - (IBAction)sendTweet1:(id)sender 
 {
     NSString *status = self.textView.text;
+    NSString *urlRequestString;
     
+    //self.image =[UIImage imageNamed:@"image1.png"];
+    
+    if (self.image !=NULL)
+        urlRequestString = @"https://upload.twitter.com/1/statuses/update_with_media.json";
+    else urlRequestString = @"https://api.twitter.com/1/statuses/update.json";
+    
+    
+    
+ 
     TWRequest *sendTweet = [[TWRequest alloc] 
-                            initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/statuses/update.json"] 
-                            parameters:[NSDictionary dictionaryWithObject:status forKey:@"status"] 
-                            requestMethod:TWRequestMethodPOST];
-    
-    NSLog(@"Problem sending tweet: %@", status);
+                                initWithURL:[NSURL URLWithString:urlRequestString] 
+                                parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil]
+                                //parameters:[NSDictionary dictionaryWithObject:status forKey:@"status"] 
+                                requestMethod:TWRequestMethodPOST];
+
+
+        
+    NSLog(@"Tweet content: %@", status);
     [sendTweet setAccount:self.account];
     NSLog(@"TWITTER USERNAME %@",[self.account username]);
+    NSLog(@"%@", self.image);
     
-    //add image
-    self.image = [UIImage imageNamed:@"image1.png"];
-    NSData *imageData = UIImagePNGRepresentation(self.image);
-    [sendTweet addMultiPartData:imageData withName:@"media[]" type:@"multipart/form-data"];
-    [sendTweet addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
-    
-    //add URL
+    if (self.image != NULL) {
+        //add image
+        NSLog(@"status: send tweet with image");
+        NSData *imageData = UIImagePNGRepresentation(self.image);
+        [sendTweet addMultiPartData:imageData withName:@"media[]" type:@"multipart/form-data"];
+        [sendTweet addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
     
     [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         NSDictionary *dict = 
@@ -133,6 +146,21 @@
             NSLog(@"Problem sending tweet: %@", error);
         }
     }];
+    } else{
+        //plain text 
+        [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+            NSLog(@"Twitter response, HTTP response: %i", [urlResponse statusCode]);
+            if ([urlResponse statusCode] == 200) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self.tweetComposeDelegate tweetComposeViewController:self didFinishWithResult:TweetComposeResultSent];
+                });
+            }
+            else {
+                NSLog(@"Problem sending tweet: %@", error);
+            }
+        }];
+    }
+    
     
     [self dismissModalViewControllerAnimated:YES];
 }
