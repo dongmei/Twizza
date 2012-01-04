@@ -206,7 +206,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="9lm-9G-EN2">
-                                        <rect key="frame" x="20" y="108" width="80" height="59"/>
+                                        <rect key="frame" x="15" y="113" width="80" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -216,7 +216,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="9lm-9G-EN2" id="YQA-Q6-toG"/>
+                        <outlet property="imageView" destination="9lm-9G-EN2" id="mdm-HO-1eO"/>
                         <outlet property="textView" destination="5JQ-sf-YcA" id="d1k-hA-Peh"/>
                     </connections>
                 </viewController>
@@ -254,6 +254,7 @@
                 <relationship kind="action" name="cancelBtnDidPressed:"/>
                 <relationship kind="action" name="getPhoto:"/>
                 <relationship kind="action" name="sendTweet1:"/>
+                <relationship kind="outlet" name="_imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="choosePhoto" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>

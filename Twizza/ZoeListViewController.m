@@ -42,7 +42,8 @@
 }*/
 
 - (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result{
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tweets done" message:@"Sent!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)didReceiveMemoryWarning

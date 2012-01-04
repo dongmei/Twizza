@@ -96,7 +96,7 @@
     NSString *status = self.textView.text;
     NSString *urlRequestString;
     
-    self.image =[UIImage imageNamed:@"image1.png"];
+    self.image = self.imageView.image;
     
     if (self.image !=NULL)
         urlRequestString = @"https://upload.twitter.com/1/statuses/update_with_media.json";
@@ -148,7 +148,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSLog(@"Open photo library");
 	[picker dismissModalViewControllerAnimated:YES];
-	imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+	//imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    [self.imageView setImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
 }
 
 /*

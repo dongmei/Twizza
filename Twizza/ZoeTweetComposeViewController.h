@@ -29,7 +29,7 @@ typedef enum TweetComposeResult TweetComposeResult;
 
 @interface ZoeTweetComposeViewController : UIViewController <UIImagePickerControllerDelegate>
 {
-    UIImageView *imageView;
+    UIImageView *_imageView;
 }
 
 @property (strong, nonatomic) ACAccount *account;
