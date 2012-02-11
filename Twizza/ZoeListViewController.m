@@ -77,7 +77,7 @@
                 NSArray *arr = (NSArray*)self.timeline;
                 NSDictionary *dict = [arr objectAtIndex:0];
                 for (NSString *k in [dict allKeys]){
-                    //NSLog(@"%@",k);
+                    NSLog(@"%@",k);
                 }
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{

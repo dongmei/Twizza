@@ -155,7 +155,7 @@
         ZoeListViewController *vc = [segue destinationViewController];
         vc.account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         
-        //NSLog(@"the vc.account is %@",vc.account);
+        NSLog(@"the vc.account is %@",vc.account);
     }
 }
 

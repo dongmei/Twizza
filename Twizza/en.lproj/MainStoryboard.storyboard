@@ -17,7 +17,7 @@
                     <tabBarItem key="tabBarItem" title="List" id="57X-ti-P9H"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1202" y="1122"/>
+            <point key="canvasLocation" x="1326" y="1488"/>
         </scene>
         <scene sceneID="1sI-U8-Ma9">
             <objects>
@@ -31,7 +31,7 @@
                     <tabBarItem key="tabBarItem" title="Topics" id="vMj-IZ-eXN"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="6462" y="519"/>
+            <point key="canvasLocation" x="1334" y="871"/>
         </scene>
         <scene sceneID="yMJ-Zi-509">
             <objects>
@@ -254,7 +254,6 @@
                 <relationship kind="action" name="cancelBtnDidPressed:"/>
                 <relationship kind="action" name="getPhoto:"/>
                 <relationship kind="action" name="sendTweet1:"/>
-                <relationship kind="outlet" name="_imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="choosePhoto" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
