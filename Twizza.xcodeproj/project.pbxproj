@@ -20,7 +20,13 @@
 		794C0184149CAF5A0014FF25 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0183149CAF5A0014FF25 /* Twitter.framework */; };
 		794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0187149CAFC40014FF25 /* ZoeListViewController.m */; };
 		79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */; };
+		C353654014C7C0C4001AF490 /* grey_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C353653F14C7C0C4001AF490 /* grey_bg.jpg */; };
+		C353654214C7C175001AF490 /* letter_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C353654114C7C175001AF490 /* letter_background.png */; };
+		C353654414C7C254001AF490 /* send_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C353654314C7C254001AF490 /* send_btn.png */; };
 		C38754EE14B4A7A8003DC717 /* special-new.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C38754ED14B4A7A8003DC717 /* special-new.jpg */; };
+		C3EC314114C7BE5700DF5FEB /* cancel_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C3EC313D14C7BE5700DF5FEB /* cancel_btn.png */; };
+		C3EC314314C7BE5700DF5FEB /* mail_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3EC313F14C7BE5700DF5FEB /* mail_bg.jpg */; };
+		C3EC314714C7BF7600DF5FEB /* camera_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = C3EC314614C7BF7600DF5FEB /* camera_icon.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +51,13 @@
 		794C0187149CAFC40014FF25 /* ZoeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeListViewController.m; sourceTree = "<group>"; };
 		79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetComposeViewController.h; sourceTree = "<group>"; };
 		79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetComposeViewController.m; sourceTree = "<group>"; };
+		C353653F14C7C0C4001AF490 /* grey_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grey_bg.jpg; sourceTree = "<group>"; };
+		C353654114C7C175001AF490 /* letter_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letter_background.png; sourceTree = "<group>"; };
+		C353654314C7C254001AF490 /* send_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_btn.png; sourceTree = "<group>"; };
 		C38754ED14B4A7A8003DC717 /* special-new.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "special-new.jpg"; sourceTree = "<group>"; };
+		C3EC313D14C7BE5700DF5FEB /* cancel_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_btn.png; sourceTree = "<group>"; };
+		C3EC313F14C7BE5700DF5FEB /* mail_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mail_bg.jpg; sourceTree = "<group>"; };
+		C3EC314614C7BF7600DF5FEB /* camera_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = camera_icon.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,9 +163,16 @@
 		79690B5114B34F5200905075 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C353654314C7C254001AF490 /* send_btn.png */,
+				C353654114C7C175001AF490 /* letter_background.png */,
+				C353653F14C7C0C4001AF490 /* grey_bg.jpg */,
+				C3EC314614C7BF7600DF5FEB /* camera_icon.gif */,
+				C3EC313D14C7BE5700DF5FEB /* cancel_btn.png */,
+				C3EC313F14C7BE5700DF5FEB /* mail_bg.jpg */,
 				C38754ED14B4A7A8003DC717 /* special-new.jpg */,
 			);
 			name = Images;
+			path = Resouces/images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +228,12 @@
 				794C0164149CAABF0014FF25 /* InfoPlist.strings in Resources */,
 				794C016D149CAABF0014FF25 /* MainStoryboard.storyboard in Resources */,
 				C38754EE14B4A7A8003DC717 /* special-new.jpg in Resources */,
+				C3EC314114C7BE5700DF5FEB /* cancel_btn.png in Resources */,
+				C3EC314314C7BE5700DF5FEB /* mail_bg.jpg in Resources */,
+				C3EC314714C7BF7600DF5FEB /* camera_icon.gif in Resources */,
+				C353654014C7C0C4001AF490 /* grey_bg.jpg in Resources */,
+				C353654214C7C175001AF490 /* letter_background.png in Resources */,
+				C353654414C7C254001AF490 /* send_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
