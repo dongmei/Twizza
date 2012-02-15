@@ -60,6 +60,7 @@
 		79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTwitterAccount.m; sourceTree = "<group>"; };
 		79FDCFF114EBDB6300ADC72D /* ZoeAddTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeAddTopicViewController.h; sourceTree = "<group>"; };
 		79FDCFF214EBDB6300ADC72D /* ZoeAddTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeAddTopicViewController.m; sourceTree = "<group>"; };
+		79FDCFF514EC05C300ADC72D /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		C353653F14C7C0C4001AF490 /* grey_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grey_bg.jpg; sourceTree = "<group>"; };
 		C353654114C7C175001AF490 /* letter_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letter_background.png; sourceTree = "<group>"; };
 		C353654314C7C254001AF490 /* send_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_btn.png; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 				794C016E149CAABF0014FF25 /* ZoeViewController.h */,
 				794C016F149CAABF0014FF25 /* ZoeViewController.m */,
 				794C0160149CAABF0014FF25 /* Supporting Files */,
+				79FDCFF514EC05C300ADC72D /* constants.h */,
 			);
 			path = Twizza;
 			sourceTree = "<group>";

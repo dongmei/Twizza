@@ -93,7 +93,7 @@
                                                          options:kNilOptions 
                                                            error:&error];
     self.topicList = [json objectForKey:@"topic"];
-    NSLog(@"%@",self.topicList);
+    NSLog(@"topiclist is %@",self.topicList);
     NSLog(@"topicList count: %d",[self.topicList count]);
 }
 
@@ -104,10 +104,9 @@
     // Make sure we're referring to the correct segue
     NSLog(@"segue");
     if ([[segue identifier] isEqualToString:@"AddTopics"]) {        
-        ZoeAddTopicViewController *vc;
-        vc = [segue destinationViewController];
+        ZoeAddTopicViewController *vc = [segue destinationViewController];
         
-        vc.account = self.account;
+        vc.account=[ZoeTwitterAccount getSharedAccount].account;
     }
     
 }
@@ -117,14 +116,9 @@
     [super viewDidLoad];
 
     //get topic list of this user_name
-    //NSString *user_name = @"zc";
+    //NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",@"zc"];
     
-    NSString *requestTopicString=@"http://localhost:8888/getuserstopics.php?user_name=zc";
-    
-    //NSMutableString *requestTopicString = @"http://localhost:8888/getuserstopics.php?user_name=zc";
-    //[requestTopicString initWithString:@"http://localhost:8888/getuserstopics.php?user_name=zc"];
-    //[requestTopicString appendString:user_name];
-    NSLog(@"%@",requestTopicString);
+    NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zc";
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     

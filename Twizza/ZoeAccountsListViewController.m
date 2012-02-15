@@ -7,7 +7,7 @@
 //
 
 #import "ZoeAccountsListViewController.h"
-
+ 
 
 @interface ZoeAccountsListViewController ()
 - (void)fetchData;
@@ -49,7 +49,7 @@
 
 - (void)fetchData
 {
-    NSLog(@"fetch account");
+    //NSLog(@"fetch account");
     if (_accountStore == nil) { 
         //to obtain the account instance for the users twitter account
         self.accountStore = [[ACAccountStore alloc] init];
@@ -58,7 +58,7 @@
             //Request access from the user for access to his Twitter accounts
             [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) {
                 if(granted) {
-                    self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];                    
+                    self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];  
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData]; 
                     });
@@ -93,6 +93,7 @@
     
     // Configure the cell...
     ACAccount *account = [self.accounts objectAtIndex:[indexPath row]];
+    
     cell.textLabel.text = account.username;
     cell.detailTextLabel.text = account.accountDescription;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -145,22 +146,20 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    NSLog(@"view did load");
 }
+
 
 #pragma mark - Table view delegate
 // Do some customisation of our new view when a table item has been selected
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowTweetLists"]) {
+        //set the account 
+        [ZoeTwitterAccount setACAccount:[self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]];
         
         // Get reference to the destination view controller
         ZoeListViewController *vc = [segue destinationViewController];
-        vc.account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        
-        ACAccount *acc = vc.account;
-        
-        //NSLog(@"The user_id is %@",vc.account.id);
+        vc.account=[ZoeTwitterAccount getSharedAccount].account;
     }
 }
 

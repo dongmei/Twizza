@@ -57,7 +57,9 @@
     TWRequest *request = [[TWRequest alloc] initWithURL:url 
                                              parameters:param 
                                           requestMethod:TWRequestMethodGET];
-    [request setAccount:self.account];    
+    //[request setAccount:[ZoeTwitterAccount getSharedAccount].account];  
+    [request setAccount:self.account];
+    
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if ([urlResponse statusCode] == 200) {
             NSError *jsonError = nil;
@@ -66,11 +68,13 @@
             if (jsonResult != nil) {
                 self.timeline = jsonResult;
                 
+                
                 NSArray *arr = (NSArray*)self.timeline;
                 NSDictionary *dict = [arr objectAtIndex:0];
+                /*print elements in dict
                 for (NSString *k in [dict allKeys]){
                     NSLog(@"%@",k);
-                }
+                }*/
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
@@ -90,45 +94,26 @@
 }
 
 
- #pragma mark - Compose Tweet
+#pragma mark - Compose Tweet
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {        
-        ZoeTweetComposeViewController *vc;
-        vc = [segue destinationViewController];
+        ZoeTweetComposeViewController *vc = [segue destinationViewController];
         
-        vc.account = self.account;
+        vc.account=[ZoeTwitterAccount getSharedAccount].account;
         vc.tweetComposeDelegate = self;
     }
     
     if ([[segue identifier] isEqualToString:@"TweetForTopic"]) {
-        ZoeTopicListViewController *topicContr;
-        topicContr = [segue destinationViewController];
+        ZoeTopicListViewController *vc = [segue destinationViewController];
         
-        //NSLog(@"List View Controller, self.account is %@", self.account);
-        topicContr.account = self.account;
+        vc.account=[ZoeTwitterAccount getSharedAccount].account;
     }
 
 }
 
-
-/*
-- (void)composeTweet
-{
-    TWTweetComposeViewController *tweetComposeViewController = [[TWTweetComposeViewController alloc] init];
-    [tweetComposeViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
-        [self dismissModalViewControllerAnimated:YES];
-    }];
-    [self presentModalViewController:tweetComposeViewController animated:YES];
-}
-
-- (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result {
-    [self dismissModalViewControllerAnimated:YES];
-    [self fetchData];
-}
-*/
 
 #pragma mark - View lifecycle
 
@@ -136,23 +121,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    /*UIBarButtonItem *compose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose 
-                                                                             target:self 
-                                                                             action:@selector(composeTweet)];
-     */
-    /*UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
-                                                                             target:self 
-                                                                             action:@selector(fetchData)];
-     */
-    //self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:compose, nil];
-    
-    NSLog(@"%@",self.account.username);
     TWRequest *fetchUserInfoRequest = [[TWRequest alloc] 
                                               initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
                                               parameters:[NSDictionary dictionaryWithObjectsAndKeys:self.account.username, @"screen_name", nil]
