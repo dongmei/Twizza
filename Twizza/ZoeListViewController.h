@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 #import "ZoeTweetComposeViewController.h"
+#import "ZoeTopicListViewController.h"
 
 @interface ZoeListViewController : UITableViewController<ZoeTweetComposeViewControllerDelegate>
 

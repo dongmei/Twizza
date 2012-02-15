@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793FAED814E6742F00E9C25D /* ZoeTopicListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 793FAED714E6742F00E9C25D /* ZoeTopicListViewController.m */; };
 		794C015A149CAABF0014FF25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0159149CAABF0014FF25 /* UIKit.framework */; };
 		794C015C149CAABF0014FF25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C015B149CAABF0014FF25 /* Foundation.framework */; };
 		794C015E149CAABF0014FF25 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C015D149CAABF0014FF25 /* CoreGraphics.framework */; };
@@ -20,6 +21,8 @@
 		794C0184149CAF5A0014FF25 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0183149CAF5A0014FF25 /* Twitter.framework */; };
 		794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794C0187149CAFC40014FF25 /* ZoeListViewController.m */; };
 		79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */; };
+		79F4177814EB50BE0052067D /* ZoeTwitterAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */; };
+		79FDCFF314EBDB6300ADC72D /* ZoeAddTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FDCFF214EBDB6300ADC72D /* ZoeAddTopicViewController.m */; };
 		C353654014C7C0C4001AF490 /* grey_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C353653F14C7C0C4001AF490 /* grey_bg.jpg */; };
 		C353654214C7C175001AF490 /* letter_background.png in Resources */ = {isa = PBXBuildFile; fileRef = C353654114C7C175001AF490 /* letter_background.png */; };
 		C353654414C7C254001AF490 /* send_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C353654314C7C254001AF490 /* send_btn.png */; };
@@ -30,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		793FAED614E6742F00E9C25D /* ZoeTopicListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTopicListViewController.h; sourceTree = "<group>"; };
+		793FAED714E6742F00E9C25D /* ZoeTopicListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTopicListViewController.m; sourceTree = "<group>"; };
 		794C0155149CAABF0014FF25 /* Twizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twizza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		794C0159149CAABF0014FF25 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		794C015B149CAABF0014FF25 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,6 +56,10 @@
 		794C0187149CAFC40014FF25 /* ZoeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeListViewController.m; sourceTree = "<group>"; };
 		79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetComposeViewController.h; sourceTree = "<group>"; };
 		79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetComposeViewController.m; sourceTree = "<group>"; };
+		79F4177614EB50BE0052067D /* ZoeTwitterAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTwitterAccount.h; sourceTree = "<group>"; };
+		79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTwitterAccount.m; sourceTree = "<group>"; };
+		79FDCFF114EBDB6300ADC72D /* ZoeAddTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeAddTopicViewController.h; sourceTree = "<group>"; };
+		79FDCFF214EBDB6300ADC72D /* ZoeAddTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeAddTopicViewController.m; sourceTree = "<group>"; };
 		C353653F14C7C0C4001AF490 /* grey_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grey_bg.jpg; sourceTree = "<group>"; };
 		C353654114C7C175001AF490 /* letter_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letter_background.png; sourceTree = "<group>"; };
 		C353654314C7C254001AF490 /* send_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_btn.png; sourceTree = "<group>"; };
@@ -115,6 +124,7 @@
 		794C015F149CAABF0014FF25 /* Twizza */ = {
 			isa = PBXGroup;
 			children = (
+				79F4177414EB50850052067D /* Model */,
 				792711C5149F365B00CB36A3 /* View */,
 				794C0185149CAFA00014FF25 /* Controller */,
 				794C0168149CAABF0014FF25 /* ZoeAppDelegate.h */,
@@ -148,6 +158,10 @@
 				794C0187149CAFC40014FF25 /* ZoeListViewController.m */,
 				79AD238314A4BEC80090AA97 /* ZoeTweetComposeViewController.h */,
 				79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */,
+				793FAED614E6742F00E9C25D /* ZoeTopicListViewController.h */,
+				793FAED714E6742F00E9C25D /* ZoeTopicListViewController.m */,
+				79FDCFF114EBDB6300ADC72D /* ZoeAddTopicViewController.h */,
+				79FDCFF214EBDB6300ADC72D /* ZoeAddTopicViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -173,6 +187,15 @@
 			);
 			name = Images;
 			path = Resouces/images;
+			sourceTree = "<group>";
+		};
+		79F4177414EB50850052067D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79F4177614EB50BE0052067D /* ZoeTwitterAccount.h */,
+				79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +273,9 @@
 				794C0180149CACE90014FF25 /* ZoeAccountsListViewController.m in Sources */,
 				794C0188149CAFC40014FF25 /* ZoeListViewController.m in Sources */,
 				79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */,
+				793FAED814E6742F00E9C25D /* ZoeTopicListViewController.m in Sources */,
+				79F4177814EB50BE0052067D /* ZoeTwitterAccount.m in Sources */,
+				79FDCFF314EBDB6300ADC72D /* ZoeAddTopicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

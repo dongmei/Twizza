@@ -39,8 +39,9 @@ typedef enum TweetComposeResult TweetComposeResult;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UIButton * choosePhoto;
 
--(IBAction) getPhoto:(id) sender;
-- (IBAction)sendTweet1:(id)sender;
+-(IBAction)getPhoto:(id) sender;
+-(IBAction)sendTweet1:(id)sender;
 -(IBAction)cancelBtnDidPressed:(id)sender;
+
 
 @end

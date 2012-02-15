@@ -69,7 +69,6 @@
 }
 
 #pragma mark - Actions
-
 -(IBAction) getPhoto:(id) sender {
     NSLog(@"Press choosePhoto");
 	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
@@ -151,6 +150,7 @@
 	//imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     [self.imageView setImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
 }
+
 
 /*
 - (IBAction)cancel:(id)sender

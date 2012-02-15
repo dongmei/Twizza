@@ -13,6 +13,7 @@
 - (void)fetchData;
 @property (strong, nonatomic) NSCache *usernameCache;
 @property (strong, nonatomic) NSCache *imageCache;
+@property (strong, nonatomic) NSCache *userIdCache;
 @end
 
 @implementation ZoeAccountsListViewController
@@ -22,6 +23,7 @@
 
 @synthesize imageCache = _imageCache;
 @synthesize usernameCache = _usernameCache;
+@synthesize userIdCache = _userIdCache;
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -101,7 +103,7 @@
     }
     else {
         TWRequest *fetchAdvancedUserProperties = [[TWRequest alloc] 
-                                                  initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/users/show.json"] 
+                                                  initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
                                                   parameters:[NSDictionary dictionaryWithObjectsAndKeys:account.username, @"screen_name", nil]
                                                   requestMethod:TWRequestMethodGET];
         [fetchAdvancedUserProperties performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -110,7 +112,8 @@
                 id userInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
                 if (userInfo != nil) {
                     dispatch_sync(dispatch_get_main_queue(), ^{
-                        [_usernameCache setObject:[userInfo valueForKey:@"name"] forKey:account.username];                        
+                        [_usernameCache setObject:[userInfo valueForKey:@"name"] forKey:account.username];  
+                        [_userIdCache setObject:[userInfo valueForKey:@"id_str"] forKey:account.username];  
                         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
                     });
                 }
@@ -155,7 +158,9 @@
         ZoeListViewController *vc = [segue destinationViewController];
         vc.account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         
-        NSLog(@"the vc.account is %@",vc.account);
+        ACAccount *acc = vc.account;
+        
+        //NSLog(@"The user_id is %@",vc.account.id);
     }
 }
 

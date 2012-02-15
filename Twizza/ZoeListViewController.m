@@ -32,15 +32,6 @@
 @synthesize account = _account;
 @synthesize timeline = _timeline;
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-    }
-    return self;
-}*/
-
 - (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tweets done" message:@"Sent!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
@@ -55,13 +46,14 @@
 }
 
 #pragma mark - Data management
-
 - (void)fetchData
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setObject:@"1" forKey:@"include_entities"];//get all entities for each tweet
     
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/home_timeline.json"];
+    //json query: https://api.twitter.com/1/statuses/home_timeline.json?include_entities=true
+    
     TWRequest *request = [[TWRequest alloc] initWithURL:url 
                                              parameters:param 
                                           requestMethod:TWRequestMethodGET];
@@ -103,17 +95,24 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure we're referring to the correct segue
-    if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {
-        
-        // Get reference to the destination view controller
+    if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {        
         ZoeTweetComposeViewController *vc;
         vc = [segue destinationViewController];
         
-        //NSLog(@"List View Controller, self.account is %@", self.account);
         vc.account = self.account;
         vc.tweetComposeDelegate = self;
     }
+    
+    if ([[segue identifier] isEqualToString:@"TweetForTopic"]) {
+        ZoeTopicListViewController *topicContr;
+        topicContr = [segue destinationViewController];
+        
+        //NSLog(@"List View Controller, self.account is %@", self.account);
+        topicContr.account = self.account;
+    }
+
 }
+
 
 /*
 - (void)composeTweet
@@ -152,6 +151,26 @@
                                                                              action:@selector(fetchData)];
      */
     //self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:compose, nil];
+    
+    NSLog(@"%@",self.account.username);
+    TWRequest *fetchUserInfoRequest = [[TWRequest alloc] 
+                                              initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
+                                              parameters:[NSDictionary dictionaryWithObjectsAndKeys:self.account.username, @"screen_name", nil]
+                                              requestMethod:TWRequestMethodGET];
+
+    [fetchUserInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        NSLog(@"status %d",[urlResponse statusCode]);
+        if ([urlResponse statusCode] == 200) {
+            //NSError *error;
+            id userInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+            if (userInfo != nil) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    NSLog(@"-id %@",(int)[userInfo valueForKey:@"id_str"]);
+                });
+            }
+        }
+    }];        
+
 }
 
 - (void)viewDidUnload
@@ -213,12 +232,6 @@
     
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
     
-    /*
-    if (cell != nil){
-        NSLog(@"nt nil");
-    }*/
-    
-    
     /** Draw frame to make labels within the prototype cell
     UILabel *cellNameLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 0, 260, 50)];
     [cell addSubview:cellNameLabel];
@@ -237,7 +250,12 @@
     
     //Use viewWithTag to display tweets
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
-    [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
+    //[cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
+    
+    NSString *intString=[NSString stringWithFormat:@"%d", [tweet valueForKeyPath:@"user.id"]];
+    
+    [cellNameLabel setText:intString];
+    NSLog(@"User_id is %@",cellNameLabel.text);
     
     UILabel *cellContentLabel = (UILabel *)[cell viewWithTag:2];
     [cellContentLabel setText:[tweet objectForKey:@"text"]];
