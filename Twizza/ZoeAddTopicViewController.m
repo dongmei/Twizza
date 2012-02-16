@@ -16,7 +16,6 @@
 
 @implementation ZoeAddTopicViewController
 
-@synthesize account = _account;
 @synthesize addedTopic;
 @synthesize connection = _connection;
 
@@ -61,7 +60,7 @@
     topicName = self.addedTopic.text;
     NSLog(@"%@",topicName);
     
-    NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topic",self.account.username,@"user_name",nil];
+    NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topic",[ZoeTwitterAccount getSharedAccount].account.username,@"user_name",nil];
     NSLog(@"%@",newTopic);
     
     if ([NSJSONSerialization isValidJSONObject:newTopic]) {

@@ -15,15 +15,14 @@
 
 @implementation ZoeTweetComposeViewController
 
-@synthesize account = _account;
 @synthesize tweetComposeDelegate = _tweetComposeDelegate;
 @synthesize image = _image;
 @synthesize imageView = _imageView;
+@synthesize textView;
 @synthesize choosePhoto = _choosePhoto;
 
 //@synthesize closeButton;
 //@synthesize sendButton;
-@synthesize textView;
 //@synthesize titleView;
 
 
@@ -104,26 +103,25 @@
     
     
  
-    TWRequest *sendTweet = [[TWRequest alloc] 
+    TWRequest *requestSend = [[TWRequest alloc] 
                                 initWithURL:[NSURL URLWithString:urlRequestString] 
                                 parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil]
                                 //parameters:[NSDictionary dictionaryWithObject:status forKey:@"status"] 
                                 requestMethod:TWRequestMethodPOST];
 
-    [sendTweet setAccount:self.account];
-    //NSLog(@"TWITTER USERNAME %@",[self.account username]);
+    [requestSend setAccount:[ZoeTwitterAccount getSharedAccount].account]; 
     //NSLog(@"%@", self.image);
     
     if (self.image != NULL) {
         //add image
         NSLog(@"status: send tweet with image");
         NSData *imageData = UIImagePNGRepresentation(self.image);
-        [sendTweet addMultiPartData:imageData withName:@"media[]" type:@"multipart/form-data"];
-        [sendTweet addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
+        [requestSend addMultiPartData:imageData withName:@"media[]" type:@"multipart/form-data"];
+        [requestSend addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
     
     } 
     
-    [sendTweet performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+    [requestSend performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         //NSDictionary *dict = 
 		//(NSDictionary *)[NSJSONSerialization 
         // JSONObjectWithData:responseData options:0 error:nil];
@@ -147,7 +145,6 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSLog(@"Open photo library");
 	[picker dismissModalViewControllerAnimated:YES];
-	//imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     [self.imageView setImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
 }
 

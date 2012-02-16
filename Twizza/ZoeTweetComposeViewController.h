@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
+#import "ZoeTwitterAccount.h"
 
 @class ZoeTweetComposeViewController;
 
@@ -32,7 +33,6 @@ typedef enum TweetComposeResult TweetComposeResult;
     UIImageView *_imageView;
 }
 
-@property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 //@property (strong, nonatomic) IBOutlet UINavigationItem *titleView;
 @property (nonatomic, assign) id<ZoeTweetComposeViewControllerDelegate> tweetComposeDelegate; 

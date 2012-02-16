@@ -29,7 +29,6 @@
 
 @implementation ZoeListViewController
 
-@synthesize account = _account;
 @synthesize timeline = _timeline;
 
 - (void)tweetComposeViewController:(ZoeTweetComposeViewController *)controller didFinishWithResult:(TweetComposeResult)result{
@@ -57,8 +56,7 @@
     TWRequest *request = [[TWRequest alloc] initWithURL:url 
                                              parameters:param 
                                           requestMethod:TWRequestMethodGET];
-    //[request setAccount:[ZoeTwitterAccount getSharedAccount].account];  
-    [request setAccount:self.account];
+    [request setAccount:[ZoeTwitterAccount getSharedAccount].account];  
     
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if ([urlResponse statusCode] == 200) {
@@ -101,17 +99,8 @@
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {        
         ZoeTweetComposeViewController *vc = [segue destinationViewController];
-        
-        vc.account=[ZoeTwitterAccount getSharedAccount].account;
         vc.tweetComposeDelegate = self;
     }
-    
-    if ([[segue identifier] isEqualToString:@"TweetForTopic"]) {
-        ZoeTopicListViewController *vc = [segue destinationViewController];
-        
-        vc.account=[ZoeTwitterAccount getSharedAccount].account;
-    }
-
 }
 
 
@@ -120,9 +109,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     TWRequest *fetchUserInfoRequest = [[TWRequest alloc] 
                                               initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
-                                              parameters:[NSDictionary dictionaryWithObjectsAndKeys:self.account.username, @"screen_name", nil]
+                                              parameters:[NSDictionary dictionaryWithObjectsAndKeys:[ZoeTwitterAccount getSharedAccount].account.username, @"screen_name", nil]
                                               requestMethod:TWRequestMethodGET];
 
     [fetchUserInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -149,7 +139,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = [NSString stringWithFormat:@"@%@", self.account.username];
+    self.title = [NSString stringWithFormat:@"@%@", [ZoeTwitterAccount getSharedAccount].account.username];
     [self fetchData];
     [super viewWillAppear:animated];
 }

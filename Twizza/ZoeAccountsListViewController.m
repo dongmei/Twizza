@@ -156,10 +156,6 @@
     if ([[segue identifier] isEqualToString:@"ShowTweetLists"]) {
         //set the account 
         [ZoeTwitterAccount setACAccount:[self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]];
-        
-        // Get reference to the destination view controller
-        ZoeListViewController *vc = [segue destinationViewController];
-        vc.account=[ZoeTwitterAccount getSharedAccount].account;
     }
 }
 

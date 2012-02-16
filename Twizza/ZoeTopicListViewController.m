@@ -98,7 +98,7 @@
 }
 
 
-
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure we're referring to the correct segue
@@ -109,7 +109,9 @@
         vc.account=[ZoeTwitterAccount getSharedAccount].account;
     }
     
-}
+}*/
+ 
+ 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -139,7 +141,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = [NSString stringWithFormat:@"%@", self.account.username];
+    self.title = [NSString stringWithFormat:@"%@", [ZoeTwitterAccount getSharedAccount].account.username];
     [super viewWillAppear:animated];
 }
 

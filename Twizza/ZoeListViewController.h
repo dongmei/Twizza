@@ -15,11 +15,6 @@
 
 @interface ZoeListViewController : UITableViewController<ZoeTweetComposeViewControllerDelegate>
 
-
-@property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) id timeline;
-
-
-
 
 @end
