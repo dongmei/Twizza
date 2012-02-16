@@ -11,6 +11,7 @@
 #import <Twitter/Twitter.h>
 #import "ZoeAddTopicViewController.h"
 #import "ZoeTwitterAccount.h"
+#import "constants.h"
 
 @interface ZoeTopicListViewController : UITableViewController
 

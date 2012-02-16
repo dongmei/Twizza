@@ -104,7 +104,7 @@
     }
     else {
         TWRequest *fetchAdvancedUserProperties = [[TWRequest alloc] 
-                                                  initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
+                                                  initWithURL:[NSURL URLWithString:TWITTER_FETCH_ACCOUNT_DATA] 
                                                   parameters:[NSDictionary dictionaryWithObjectsAndKeys:account.username, @"screen_name", nil]
                                                   requestMethod:TWRequestMethodGET];
         [fetchAdvancedUserProperties performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -128,7 +128,7 @@
     }
     else {
         TWRequest *fetchUserImageRequest = [[TWRequest alloc] 
-                                            initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image/%@", account.username]] 
+                                            initWithURL:[NSURL URLWithString:[NSString stringWithFormat:TWITTER_FETCH_PROFILE_IMAGE, account.username]] 
                                             parameters:nil
                                             requestMethod:TWRequestMethodGET];
         [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {

@@ -34,11 +34,11 @@
 {
     NSLog(@"number of rows %@",[self.topicList count]);
     return [self.topicList count];
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"topic list: table view");
     static NSString *CellIdentifier = @"TopicCellIdentifier";
     NSLog(@"build table");
     
@@ -50,7 +50,7 @@
     NSString *topic = [self.topicList objectAtIndex:[indexPath row]];
     NSLog(@"topic is %@",topic);
     
-    UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:2];
+    UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
     [cellNameLabel setText:topic];
     
     return cell;
@@ -60,7 +60,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 50;
 }
 
 
@@ -86,6 +86,7 @@
 
 - (void)fetchData:(NSData *)responseData
 {
+    NSLog(@"topic list: fetch data");
     //parse out the json data,and get user's topics from server
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData //1
@@ -115,13 +116,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"Topic list: view did load");
 
     //get topic list of this user_name
     NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
     
-   // NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",accountName];
+    NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",accountName];
     
-    NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zoeMeii";
+    //NSString *requestTopicString= [NSString stringWithFormat:@"%@%@.php?user_name=%@",TWIZZA_HOST_URL,SERVER_GET_TOPIC_LIST_PHP,accountName];
+    
+    //NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zoeMeii";
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     
@@ -145,6 +149,7 @@
 {
     self.title = [NSString stringWithFormat:@"%@", [ZoeTwitterAccount getSharedAccount].account.username];
     [super viewWillAppear:animated];
+    NSLog(@"topic list: view will appear");
 }
 
 

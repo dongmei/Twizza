@@ -55,8 +55,10 @@
 
 #pragma mark - Actions
 -(IBAction)addNewTopic:(id) sender {
-    NSString *topicName;
     
+    [sender resignFirstResponder];
+    
+    NSString *topicName;
     topicName = self.addedTopic.text;
     NSLog(@"%@",topicName);
     
@@ -72,8 +74,8 @@
             [self jsonPostRequest:result];
             NSLog(@"tweet sent successully");
         }
-        
     }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - View lifecycle

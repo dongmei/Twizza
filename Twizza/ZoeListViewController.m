@@ -50,7 +50,7 @@
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setObject:@"1" forKey:@"include_entities"];//get all entities for each tweet
     
-    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/home_timeline.json"];
+    NSURL *url = [NSURL URLWithString:TWITTER_FETCH_TIMELINE];
     //json query: https://api.twitter.com/1/statuses/home_timeline.json?include_entities=true
     
     TWRequest *request = [[TWRequest alloc] initWithURL:url 
@@ -139,7 +139,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = [NSString stringWithFormat:@"@%@", [ZoeTwitterAccount getSharedAccount].account.username];
+    //self.title = [NSString stringWithFormat:@"@%@", [ZoeTwitterAccount getSharedAccount].account.username];
     [self fetchData];
     [super viewWillAppear:animated];
 }
