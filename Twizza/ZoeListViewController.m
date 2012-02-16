@@ -207,12 +207,7 @@
     
     //Use viewWithTag to display tweets
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
-    //[cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
-    
-    NSString *intString=[NSString stringWithFormat:@"%d", [tweet valueForKeyPath:@"user.id"]];
-    
-    [cellNameLabel setText:intString];
-    NSLog(@"User_id is %@",cellNameLabel.text);
+    [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
     
     UILabel *cellContentLabel = (UILabel *)[cell viewWithTag:2];
     [cellContentLabel setText:[tweet objectForKey:@"text"]];

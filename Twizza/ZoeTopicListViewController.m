@@ -11,7 +11,6 @@
 
 @implementation ZoeTopicListViewController
 
-@synthesize account = _account;
 @synthesize topicList = _topicList;
 
 - (void)didReceiveMemoryWarning
@@ -33,7 +32,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"number of rows %@",self.topicList);
+    NSLog(@"number of rows %@",[self.topicList count]);
     return [self.topicList count];
     
 }
@@ -118,9 +117,11 @@
     [super viewDidLoad];
 
     //get topic list of this user_name
-    //NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",@"zc"];
+    NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
     
-    NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zc";
+   // NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",accountName];
+    
+    NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zoeMeii";
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     
@@ -128,6 +129,7 @@
         NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
         [self performSelectorOnMainThread:@selector(fetchData:) 
                                withObject:data waitUntilDone:YES];
+        NSLog(@"complete fetch data");
     });
 }
 

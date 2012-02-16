@@ -14,7 +14,6 @@
 
 @interface ZoeTopicListViewController : UITableViewController
 
-@property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) NSArray *topicList;
 
 
