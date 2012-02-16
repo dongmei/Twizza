@@ -120,7 +120,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     TWRequest *fetchUserInfoRequest = [[TWRequest alloc] 
                                               initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
                                               parameters:[NSDictionary dictionaryWithObjectsAndKeys:self.account.username, @"screen_name", nil]
