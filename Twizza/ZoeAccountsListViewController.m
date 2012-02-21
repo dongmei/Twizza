@@ -49,7 +49,6 @@
 
 - (void)fetchData
 {
-    //NSLog(@"fetch account");
     if (_accountStore == nil) { 
         //to obtain the account instance for the users twitter account
         self.accountStore = [[ACAccountStore alloc] init];

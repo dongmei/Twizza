@@ -105,8 +105,7 @@
  
     TWRequest *requestSend = [[TWRequest alloc] 
                                 initWithURL:[NSURL URLWithString:urlRequestString] 
-                                parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil]
-                                //parameters:[NSDictionary dictionaryWithObject:status forKey:@"status"] 
+                                parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil] 
                                 requestMethod:TWRequestMethodPOST];
 
     [requestSend setAccount:[ZoeTwitterAccount getSharedAccount].account]; 
