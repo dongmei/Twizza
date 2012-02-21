@@ -123,8 +123,6 @@
     
     NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",accountName];
     
-    //NSString *requestTopicString= [NSString stringWithFormat:@"%@%@.php?user_name=%@",TWIZZA_HOST_URL,SERVER_GET_TOPIC_LIST_PHP,accountName];
-    
     //NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zoeMeii";
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
