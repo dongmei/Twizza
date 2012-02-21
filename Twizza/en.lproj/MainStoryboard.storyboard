@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GXp-vq-0Zl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3Uk-Fq-IbS">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -10,6 +10,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKn-dG-01u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="MYd-3Q-F02" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Twizza" id="aTD-sQ-vlK"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Upp-pN-vWB">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -42,7 +43,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="MYd-3Q-F02" kind="push" identifier="ShowTweetLists" id="DdE-aq-t6S"/>
+                                    <segue destination="MYd-3Q-F02" kind="modal" identifier="ShowTweetLists" id="FT2-Zq-i0J"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -304,23 +305,6 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2404" y="258"/>
-        </scene>
-        <scene sceneID="P06-rs-cqS">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h37-7R-AGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="GXp-vq-0Zl" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GjE-JS-gCq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="3Uk-Fq-IbS" kind="relationship" relationship="rootViewController" id="aND-Jt-44u"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-260" y="740"/>
         </scene>
         <scene sceneID="8qZ-h9-Bey">
             <objects>

@@ -32,7 +32,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"number of rows %@",[self.topicList count]);
+    NSLog(@"number of rows %d",[self.topicList count]);
     return [self.topicList count];
 }
 
@@ -95,6 +95,7 @@
     self.topicList = [json objectForKey:@"topic"];
     NSLog(@"topiclist is %@",self.topicList);
     NSLog(@"topicList count: %d",[self.topicList count]);
+    [(UITableView*)self.view reloadData];
 }
 
 
@@ -110,7 +111,6 @@
     }
     
 }*/
- 
  
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
