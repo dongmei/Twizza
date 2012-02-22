@@ -32,7 +32,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"number of rows %d",[self.topicList count]);
     return [self.topicList count];
 }
 
@@ -40,7 +39,6 @@
 {
     NSLog(@"topic list: table view");
     static NSString *CellIdentifier = @"TopicCellIdentifier";
-    NSLog(@"build table");
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -48,7 +46,6 @@
     }
     
     NSString *topic = [self.topicList objectAtIndex:[indexPath row]];
-    NSLog(@"topic is %@",topic);
     
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
     [cellNameLabel setText:topic];
@@ -122,8 +119,6 @@
     NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
     
     NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",accountName];
-    
-    //NSString *requestTopicString= @"http://localhost:8888/getuserstopics.php?user_name=zoeMeii";
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     

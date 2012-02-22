@@ -13,16 +13,19 @@
 @interface ZoeTwitterAccount : NSObject
 {
     ACAccount *account;
+    NSString *twitterID;
 }
 
 @property (strong, nonatomic) ACAccount *account;
-@property (strong, nonatomic) NSString  *twitterID;
+@property (strong, nonatomic) NSString *twitterID;
 
--(id)initWithACAccount:(ACAccount*)acc;
+//-(id)initWithACAccount:(ACAccount*)acc;
+-(id)initWithACAccount:(ACAccount*)acc withID:(NSString*)twID;
 
 +(ZoeTwitterAccount*)getSharedAccount;
 
-+(void)setACAccount:(ACAccount*)account;
++(void)setACAccount:(ACAccount*)acc twitterID:(NSString*)tID;
 
 -(NSString*)getUserName;
+-(NSString*)getTwitterID;
 @end

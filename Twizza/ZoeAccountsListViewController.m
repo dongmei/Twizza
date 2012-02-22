@@ -32,7 +32,9 @@
         _imageCache = [[NSCache alloc] init];
         [_imageCache setName:@"TWImageCache"];
         _usernameCache = [[NSCache alloc] init];
-        [_usernameCache setName:@"TWUsernameCache"];
+        [_usernameCache setName:@"TWUserIDCache"];
+        _userIdCache = [[NSCache alloc] init];
+        [_userIdCache setName:@"TWUserIDCache"];
         [self fetchData];
     }
     return self;
@@ -42,6 +44,7 @@
 {
     [_imageCache removeAllObjects];
     [_usernameCache removeAllObjects];
+    [_userIdCache removeAllObjects];
     [super didReceiveMemoryWarning];
 }
 
@@ -154,7 +157,9 @@
 {
     if ([[segue identifier] isEqualToString:@"ShowTweetLists"]) {
         //set the account 
-        [ZoeTwitterAccount setACAccount:[self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]];
+        ACAccount *account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        NSString *tID = [_userIdCache objectForKey:account.username];
+        [ZoeTwitterAccount setACAccount:account twitterID:tID];
     }
 }
 

@@ -20,25 +20,34 @@ ZoeTwitterAccount* sharedAccount_ = nil;
     return sharedAccount_;
 }
 
-+(void)setACAccount:(ACAccount*)account{
++(void)setACAccount:(ACAccount*)acc twitterID:(NSString*)tID{
     if (sharedAccount_ == nil){
-        sharedAccount_ = [[ZoeTwitterAccount alloc] initWithACAccount:account];
-        NSLog(@"initial nil, setACAccount: %@",sharedAccount_.account.username);
-    }else sharedAccount_.account = account;
-    NSLog(@"not nil, passed account: %@",account.username);
+        sharedAccount_ = [[ZoeTwitterAccount alloc] initWithACAccount:acc withID:tID];
+    }else 
+    {
+        [ZoeTwitterAccount getSharedAccount].account = acc;
+        [ZoeTwitterAccount getSharedAccount].twitterID = tID;
+    }
+    NSLog(@"setACAccount, passed account: %@",acc.username);
+    NSLog(@"set twitterID, passed ID: %@",tID);
 }
 
--(id)initWithACAccount:(ACAccount*)acc{
+
+-(id)initWithACAccount:(ACAccount*)acc withID:(NSString*)twID{
     self = [super init];
     if (self){
         self.account = acc;
-        self.twitterID = 0;
+        self.twitterID = twID;
     }
     return  self;
 }
 
 -(NSString*)getUserName{
     return self.account.username;
+}
+
+-(NSString*)getTwitterID{
+    return self.twitterID;
 }
 
 @end
