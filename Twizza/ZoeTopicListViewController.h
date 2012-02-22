@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 #import "ZoeAddTopicViewController.h"
+#import "ZoeTweetSearchViewController.h"
 #import "ZoeTwitterAccount.h"
 #import "constants.h"
 

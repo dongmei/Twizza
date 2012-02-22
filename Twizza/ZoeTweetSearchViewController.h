@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ZoeTwitterAccount.h"
+#import "constants.h"
 
 @interface ZoeTweetSearchViewController : UITableViewController
+{
+    NSString *qForSearching;
+}
 
 @property (strong, nonatomic) id tweetList;
 

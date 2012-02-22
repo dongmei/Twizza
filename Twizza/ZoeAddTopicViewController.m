@@ -30,7 +30,10 @@
 
 - (id)jsonPostRequest:(NSData *)jsonPostRequestData
 {
-    NSURL *url = [NSURL URLWithString:@"http://localhost:8888/addNewTopic.php"];
+    //NSURL *url = [NSURL URLWithString:@"http://localhost:8888/addNewTopic.php"];
+    NSString *requestString = [NSString stringWithFormat:@"%@/addNewTopic.php",TWIZZA_HOST_URL]; 
+    NSURL *url = [NSURL URLWithString:requestString];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
     [request setHTTPMethod:@"POST"];

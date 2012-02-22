@@ -13,8 +13,9 @@
 #define TWITTER_FETCH_ACCOUNT_DATA @"https://api.twitter.com/1/users/show.json"
 #define TWITTER_FETCH_TIMELINE @"https://api.twitter.com/1/statuses/home_timeline.json"
 #define TWITTER_FETCH_PROFILE_IMAGE @"http://api.twitter.com/1/users/profile_image/%@"
+#define TWITTER_SERACH_WITHOUT_Q @"http://search.twitter.com/search.json?q="
 
-#define TWIZZA_HOST_URL @"http://localhost:8888/"
+#define TWIZZA_HOST_URL @"http://localhost:8888"
 
 #define SERVER_GET_TOPIC_LIST_PHP getuserstopics
 

@@ -92,21 +92,15 @@
 {
     // Do a simple search, using the Twitter API
     NSLog(@"fetch data");
-    /*TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:
-                                                         @"http://search.twitter.com/search.json?q=iOS%205&rpp=5&with_twitter_user_id=true&result_type=recent"] 
-                                             parameters:nil requestMethod:TWRequestMethodGET];
-     */
-    
+
+    NSString *keyword = @"iOS%205";
+    NSString *requestString= [NSString stringWithFormat:@"%@%@&with_twitter_user_id=true&result_type=recent",TWITTER_SERACH_WITHOUT_Q,keyword];
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:
-                                                         @"http://search.twitter.com/search.json?q=iOS%205&with_twitter_user_id=true&result_type=recent"] 
+                                                         requestString] 
                                              parameters:nil requestMethod:TWRequestMethodGET];
-    
-    
     [request setAccount:[ZoeTwitterAccount getSharedAccount].account]; 
-    
-    NSLog(@"perform request");
-    // Notice this is a block, it is the handler to process the response
+
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
     {
         if ([urlResponse statusCode] == 200) 
@@ -132,10 +126,7 @@
                                   cancelButtonTitle:@"Cancel" 
                                   otherButtonTitles:nil] show];
             }
-        }
-        
-        else
-            NSLog(@"Twitter error, HTTP response: %i", [urlResponse statusCode]);
+        }else NSLog(@"Twitter error, HTTP response: %i", [urlResponse statusCode]);
     }];
 }
 
@@ -143,7 +134,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.title = [NSString stringWithFormat:@"@%@", [ZoeTwitterAccount getSharedAccount].account.username];
-    NSLog(@"view will appear");
     [self fetchData];
     [super viewWillAppear:animated];
 }

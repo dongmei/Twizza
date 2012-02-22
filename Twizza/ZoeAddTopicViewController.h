@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import "ZoeTwitterAccount.h"
+#import "constants.h"
 
 @interface ZoeAddTopicViewController : UIViewController
 {
