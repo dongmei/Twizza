@@ -37,7 +37,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"topic list: table view");
     static NSString *CellIdentifier = @"TopicCellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -152,6 +151,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure we're referring to the correct segue
+    if ([[segue identifier] isEqualToString:@"searchTweets"]) {        
+        NSLog(@"segue");
+    }
+}
 
 @end

@@ -115,6 +115,55 @@
             </objects>
             <point key="canvasLocation" x="1815" y="258"/>
         </scene>
+        <scene sceneID="5BW-Jv-pP8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hT4-QH-Laf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="XQY-Mc-2ta" customClass="ZoeTweetSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="141" sectionHeaderHeight="22" sectionFooterHeight="22" id="ed2-Qs-1Ag">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellIdentifier" rowHeight="141" id="WZh-1i-itz">
+                                <rect key="frame" x="0.0" y="22" width="320" height="141"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" id="Xac-nz-bGY">
+                                            <rect key="frame" x="7" y="15" width="58" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="CbT-pD-6Uu">
+                                            <rect key="frame" x="95" y="15" width="180" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="qxI-uD-jRA">
+                                            <rect key="frame" x="95" y="44" width="205" height="76"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XQY-Mc-2ta" id="4bX-ki-937"/>
+                            <outlet property="delegate" destination="XQY-Mc-2ta" id="50k-Sg-auy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MN2-58-JV2"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2140" y="897"/>
+        </scene>
         <scene sceneID="oo6-Re-kWB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K89-JB-yxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,6 +199,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="0qk-63-BCR">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="1E2-CV-D7J">
+                            <connections>
+                                <segue destination="XQY-Mc-2ta" kind="push" identifier="searchTweets" id="5Hf-mU-yTF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4ZK-Vi-jXa">
                             <connections>
                                 <segue destination="0u7-bl-h6l" kind="modal" identifier="AddTopics" id="c9h-hh-sHk"/>
@@ -159,7 +213,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1815" y="902"/>
+            <point key="canvasLocation" x="1823" y="1470"/>
         </scene>
         <scene sceneID="O5V-g2-9k6">
             <objects>
@@ -201,7 +255,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2404" y="902"/>
+            <point key="canvasLocation" x="2394" y="1470"/>
         </scene>
         <scene sceneID="4C3-kb-qZc">
             <objects>
@@ -340,7 +394,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1289" y="902"/>
+            <point key="canvasLocation" x="1307" y="1470"/>
         </scene>
     </scenes>
     <resources>
@@ -377,6 +431,9 @@
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
             </relationships>
+        </class>
+        <class className="ZoeTweetSearchViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ZoeTweetSearchViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

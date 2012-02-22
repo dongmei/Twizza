@@ -68,6 +68,8 @@
                 
                 
                 NSArray *arr = (NSArray*)self.timeline;
+                //NSLog(@"timeline is %@",self.timeline);
+                
                 NSDictionary *dict = [arr objectAtIndex:0];
                 /*print elements in dict
                 for (NSString *k in [dict allKeys]){
