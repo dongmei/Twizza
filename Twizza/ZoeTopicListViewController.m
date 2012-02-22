@@ -87,7 +87,8 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                          options:kNilOptions 
                                                            error:&error];
-    self.topicList = [json objectForKey:@"topic"];
+    NSLog(@"%@",json);
+    self.topicList = [json objectForKey:@"topic_name"];
     NSLog(@"topiclist is %@",self.topicList);
     NSLog(@"topicList count: %d",[self.topicList count]);
     [(UITableView*)self.view reloadData];
@@ -114,9 +115,9 @@
     NSLog(@"Topic list: view did load");
 
     //get topic list of this user_name
-    NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
-    
-    NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_name=%@",accountName];
+    //NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
+    NSString *userID = [ZoeTwitterAccount getSharedAccount].twitterID;
+    NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_id=%@",userID];
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     

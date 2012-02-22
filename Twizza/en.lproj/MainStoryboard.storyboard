@@ -162,7 +162,7 @@
                     <navigationItem key="navigationItem" id="MN2-58-JV2"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2140" y="897"/>
+            <point key="canvasLocation" x="2360" y="1265"/>
         </scene>
         <scene sceneID="oo6-Re-kWB">
             <objects>
@@ -173,11 +173,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TopicCellIdentifier" rowHeight="80" id="p4p-BW-mwb">
+                            <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TopicCellIdentifier" rowHeight="80" id="p4p-BW-mwb">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" minimumFontSize="10" id="Cid-zN-Ep8">
@@ -190,6 +190,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="XQY-Mc-2ta" kind="push" identifier="searchTweets" id="5Fs-a6-Mxq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -199,11 +202,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="0qk-63-BCR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="1E2-CV-D7J">
-                            <connections>
-                                <segue destination="XQY-Mc-2ta" kind="push" identifier="searchTweets" id="5Hf-mU-yTF"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="1E2-CV-D7J"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4ZK-Vi-jXa">
                             <connections>
                                 <segue destination="0u7-bl-h6l" kind="modal" identifier="AddTopics" id="c9h-hh-sHk"/>
@@ -255,7 +254,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2394" y="1470"/>
+            <point key="canvasLocation" x="2360" y="1886"/>
         </scene>
         <scene sceneID="4C3-kb-qZc">
             <objects>

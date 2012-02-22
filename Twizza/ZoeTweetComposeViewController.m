@@ -100,9 +100,6 @@
         urlRequestString = @"https://upload.twitter.com/1/statuses/update_with_media.json";
     else urlRequestString = @"https://api.twitter.com/1/statuses/update.json";
     
-    
-    
- 
     TWRequest *requestSend = [[TWRequest alloc] 
                                 initWithURL:[NSURL URLWithString:urlRequestString] 
                                 parameters:[NSDictionary dictionaryWithObjectsAndKeys:status, @"status", nil] 

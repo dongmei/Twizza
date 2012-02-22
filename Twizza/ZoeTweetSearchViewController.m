@@ -93,8 +93,10 @@
     // Do a simple search, using the Twitter API
     NSLog(@"fetch data");
 
-    NSString *keyword = @"iOS%205";
-    NSString *requestString= [NSString stringWithFormat:@"%@%@&with_twitter_user_id=true&result_type=recent",TWITTER_SERACH_WITHOUT_Q,keyword];
+    NSString *keywordRaw = @"iOS 5";
+    NSString *keywordEncoded = [keywordRaw stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *requestString= [NSString stringWithFormat:@"%@%@&with_twitter_user_id=true&result_type=recent",TWITTER_SERACH_WITHOUT_Q,keywordEncoded];
+    NSLog(@"Request string is %@",requestString);
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:
                                                          requestString] 
