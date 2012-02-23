@@ -12,6 +12,7 @@
 @implementation ZoeTopicListViewController
 
 @synthesize topicList = _topicList;
+@synthesize selectedKeywords = _selectedKeywords;
 
 - (void)didReceiveMemoryWarning
 {
@@ -44,10 +45,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NSString *topic = [self.topicList objectAtIndex:[indexPath row]];
+    NSDictionary *topic = [self.topicList objectAtIndex:[indexPath row]];
     
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
-    [cellNameLabel setText:topic];
+    [cellNameLabel setText:[topic objectForKey:@"topic_name"]];
     
     return cell;
 }
@@ -79,18 +80,31 @@
 }
 */
 
+- (void)getKeywords
+{
+    NSString *userID = [ZoeTwitterAccount getSharedAccount].twitterID;
+    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getkeywords.php?user_id=%@",TWIZZA_HOST_URL,userID];
+    
+    NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
+        [self performSelectorOnMainThread:@selector(fetchKeywords:) 
+                               withObject:data waitUntilDone:YES];
+        NSLog(@"complete fetch keyewords");
+    });
+}
+
+
 - (void)fetchData:(NSData *)responseData
 {
     NSLog(@"topic list: fetch data");
     //parse out the json data,and get user's topics from server
     NSError* error;
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData //1
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                          options:kNilOptions 
                                                            error:&error];
-    NSLog(@"%@",json);
-    self.topicList = [json objectForKey:@"topic_name"];
-    NSLog(@"topiclist is %@",self.topicList);
-    NSLog(@"topicList count: %d",[self.topicList count]);
+    self.topicList = json;
     [(UITableView*)self.view reloadData];
 }
 
@@ -117,7 +131,7 @@
     //get topic list of this user_name
     //NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
     NSString *userID = [ZoeTwitterAccount getSharedAccount].twitterID;
-    NSString *requestTopicString= [NSString stringWithFormat:@"http://localhost:8888/getuserstopics.php?user_id=%@",userID];
+    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getuserstopics.php?user_id=%@",TWIZZA_HOST_URL,userID];
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     
@@ -139,7 +153,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = [NSString stringWithFormat:@"%@", [ZoeTwitterAccount getSharedAccount].account.username];
+    self.navigationController.navigationBar.topItem.title = @"My Topics";
     [super viewWillAppear:animated];
     NSLog(@"topic list: view will appear");
 }
@@ -156,6 +170,8 @@
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"searchTweets"]) {        
         NSLog(@"segue");
+        ZoeTweetSearchViewController *vc = [segue destinationViewController];
+        vc.topic = [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     }
 }
 

@@ -12,9 +12,10 @@
 
 @interface ZoeTweetSearchViewController : UITableViewController
 {
-    NSString *qForSearching;
+    NSDictionary *topic;
 }
 
 @property (strong, nonatomic) id tweetList;
+@property (strong, nonatomic) NSDictionary *topic;
 
 @end

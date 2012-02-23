@@ -17,6 +17,9 @@
 @interface ZoeTopicListViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *topicList;
+@property (strong, nonatomic) NSArray *selectedKeywords;
+
+- (void)getKeywords;
 
 
 @end

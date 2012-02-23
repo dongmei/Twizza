@@ -28,7 +28,7 @@ typedef enum TweetComposeResult TweetComposeResult;
 
 
 
-@interface ZoeTweetComposeViewController : UIViewController <UIImagePickerControllerDelegate>
+@interface ZoeTweetComposeViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIImageView *_imageView;
 }

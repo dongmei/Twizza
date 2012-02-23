@@ -14,6 +14,7 @@
 
 @implementation ZoeTweetSearchViewController
 @synthesize tweetList = _tweetList;
+@synthesize topic;
 
 - (void)didReceiveMemoryWarning
 {
@@ -91,12 +92,19 @@
 - (void)fetchData
 {
     // Do a simple search, using the Twitter API
-    NSLog(@"fetch data");
-
-    NSString *keywordRaw = @"iOS 5";
+    
+    //NSString *keywordRaw = @"iOS 5";
+    NSArray *keywordArray = [self.topic objectForKey:@"topic_keyword"];
+    NSString *keywordRaw = [keywordArray objectAtIndex:0];
+    
+    for (int i = 1 ; i < keywordArray.count; i++) {
+        NSString *trimmedString = [[keywordArray objectAtIndex:i] stringByTrimmingCharactersInSet:
+                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        keywordRaw = [keywordRaw stringByAppendingFormat:@" OR %@",trimmedString];
+    }
+    
     NSString *keywordEncoded = [keywordRaw stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *requestString= [NSString stringWithFormat:@"%@%@&with_twitter_user_id=true&result_type=recent",TWITTER_SERACH_WITHOUT_Q,keywordEncoded];
-    NSLog(@"Request string is %@",requestString);
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:
                                                          requestString] 
@@ -109,14 +117,9 @@
         {
             
             NSError *jsonError = nil;
-            
-            
             id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-
             if (jsonResult != nil) {
                 self.tweetList = jsonResult;
-                NSLog(@"Twitter response: %@", jsonResult); 
-                
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });                
@@ -135,7 +138,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = [NSString stringWithFormat:@"@%@", [ZoeTwitterAccount getSharedAccount].account.username];
+    self.title = [NSString stringWithFormat:@"%@", [self.topic objectForKey:@"topic_name"]];
     [self fetchData];
     [super viewWillAppear:animated];
 }

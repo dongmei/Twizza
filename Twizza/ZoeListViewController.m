@@ -66,16 +66,6 @@
             if (jsonResult != nil) {
                 self.timeline = jsonResult;
                 
-                
-                NSArray *arr = (NSArray*)self.timeline;
-                //NSLog(@"timeline is %@",self.timeline);
-                
-                NSDictionary *dict = [arr objectAtIndex:0];
-                /*print elements in dict
-                for (NSString *k in [dict allKeys]){
-                    NSLog(@"%@",k);
-                }*/
-                
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });                
@@ -111,6 +101,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@",TWIZZA_HOST_URL);
     
     /*
     
@@ -144,7 +135,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = [NSString stringWithFormat:@"@%@", [ZoeTwitterAccount getSharedAccount].account.username];
+    self.navigationController.navigationBar.topItem.title = [[ZoeTwitterAccount getSharedAccount] getUserName];
     [self fetchData];
     [super viewWillAppear:animated];
 }
