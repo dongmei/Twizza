@@ -13,6 +13,8 @@
 #import "ZoeTweetSearchViewController.h"
 #import "ZoeTwitterAccount.h"
 #import "constants.h"
+#import "Reachability.h"
+
 
 @interface ZoeTopicListViewController : UITableViewController
 

@@ -53,6 +53,31 @@
     return cell;
 }
 
+#pragma mark - Check Wifi connection
+- (void)checkForWIFIConnection {
+    Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
+    
+    NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
+    
+    if (netStatus!=ReachableViaWiFi)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No WIFI available!", @"AlertView") 
+                                                            message:NSLocalizedString(@"You have no wifi connection available. Please connect to a WIFI network.", @"AlertView") 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"AlertView") 
+                                                  otherButtonTitles:NSLocalizedString(@"Open settings", @"AlertView"), nil];
+        [alertView show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,6 +152,8 @@
 {
     [super viewDidLoad];
     NSLog(@"Topic list: view did load");
+    
+    [self checkForWIFIConnection];
 
     //get topic list of this user_name
     //NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;

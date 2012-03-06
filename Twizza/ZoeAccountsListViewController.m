@@ -77,6 +77,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self checkForWIFIConnection];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -146,8 +152,30 @@
     return cell;
 }
 
--(void)viewDidLoad{
-    [super viewDidLoad];
+
+//Check Wifi connection
+- (void)checkForWIFIConnection {
+    Reachability* wifiReach = [Reachability reachabilityForLocalWiFi];
+    
+    NetworkStatus netStatus = [wifiReach currentReachabilityStatus];
+    
+    if (netStatus!=ReachableViaWiFi)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No WIFI available!", @"AlertView") 
+                                                            message:NSLocalizedString(@"You have no wifi connection available. Please connect to a WIFI network.", @"AlertView") 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"AlertView") 
+                                                  otherButtonTitles:NSLocalizedString(@"Open settings", @"AlertView"), nil];
+        [alertView show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+    }
 }
 
 

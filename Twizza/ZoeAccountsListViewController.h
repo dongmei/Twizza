@@ -12,10 +12,13 @@
 #import "ZoeListViewController.h"
 #import "ZoeTwitterAccount.h"
 #import "constants.h"
+#import "Reachability.h"
 
-@interface ZoeAccountsListViewController : UITableViewController
+@interface ZoeAccountsListViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) ACAccountStore *accountStore; 
 @property (strong, nonatomic) NSArray *accounts;
+
+- (void)checkForWIFIConnection;
 
 @end

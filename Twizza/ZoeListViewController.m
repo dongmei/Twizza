@@ -185,22 +185,35 @@
     
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
     
-    /** Draw frame to make labels within the prototype cell
-    UILabel *cellNameLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 0, 260, 50)];
-    [cell addSubview:cellNameLabel];
+    //Draw frame to make labels within the prototype cell
+    UILabel *cellNameLabel = [[UILabel alloc] initWithFrame: CGRectZero];
     [cellNameLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
-    cellNameLabel.numberOfLines = 1;//max of lines
+    cellNameLabel.numberOfLines = 10;//max of lines
     [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
+    CGRect bounds1 = CGRectMake(0, 0, 256, 300.0);
+    CGRect result1 = [cellNameLabel textRectForBounds:bounds1 limitedToNumberOfLines:10];
+    [cell addSubview:cellNameLabel];
     
-    UILabel *cellContentLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 50, 260, 50)];
+    UILabel *cellContentLabel = [[UILabel alloc] initWithFrame: CGRectZero];
+    [cellContentLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
+    cellContentLabel.numberOfLines = 10;//max of lines
+    [cellContentLabel setText:[tweet objectForKey:@"text"]];
+    CGRect bounds2 = CGRectMake(0, 10, 256, 300.0);
+    CGRect result2 = [cellContentLabel textRectForBounds:bounds2 limitedToNumberOfLines:10];
+	CGFloat h = result2.size.height;//Get text box height
+    NSLog(@"height is %@",h);
     [cell addSubview:cellContentLabel];
+    
+    /*
+    UILabel *cellContentLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 50, 260, 50)];
     [cellContentLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
     cellContentLabel.numberOfLines = 5;//max of lines
     [cellContentLabel setMinimumFontSize:10];
     [cellContentLabel setText:[tweet objectForKey:@"text"]];
-    //[cellContentLabel setText:[tweet valueForKeyPath:@"user.profile_image_url"]];
-     */
+    [cell addSubview:cellContentLabel];
+    //[cellContentLabel setText:[tweet valueForKeyPath:@"user.profile_image_url"]];*/
     
+    /*
     //Use viewWithTag to display tweets
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
     [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
@@ -213,6 +226,7 @@
     NSURL *imageURL = [NSURL URLWithString:imageURLString];
     NSData *profileImageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     [cellPofileImage setImage:[UIImage imageWithData:profileImageData]];
+     */
     
     return cell;
 }

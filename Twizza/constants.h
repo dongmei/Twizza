@@ -21,7 +21,7 @@
 #endif
 
 #ifndef TWIZZA_HOST_URL
-#define TWIZZA_HOST_URL @"http://zoe4meii.com/twizza"
+//#define TWIZZA_HOST_URL @"http://zoe4meii.com/twizza"
 #endif
 
 #define SERVER_GET_TOPIC_LIST_PHP getuserstopics
