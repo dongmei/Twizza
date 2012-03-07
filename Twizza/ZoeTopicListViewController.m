@@ -17,7 +17,7 @@
 
 @implementation ZoeTopicListViewController
 
-@synthesize topicList = _topicList;
+@synthesize topicList;
 @synthesize selectedKeywords = _selectedKeywords;
 @synthesize userID = _userID;
 @synthesize connection = _connection;
@@ -52,10 +52,11 @@
     NSLog(@"topic list: fetch data");
     //parse out the json data,and get user's topics from server
     NSError* error;
-    NSMutableArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                     options:kNilOptions 
                                                       error:&error];
-    self.topicList = json;
+    //self.topicList = json;
+    self.topicList = [NSMutableArray arrayWithArray:json];
     
     NSLog(@"%@",json);
     [(UITableView*)self.view reloadData];
@@ -161,8 +162,11 @@
         NSLog(@"call deleteTopic");
         //[self deleteTopic];
         
-		[self.topicList removeObjectAtIndex:indexPath.row];
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSLog(@"%d",indexPath.row);
+        NSLog(@"%@",self.topicList);
+		//[self.topicList removeObjectAtIndex:indexPath.row];
+        [self.topicList removeLastObject];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}   
 }
 

@@ -191,7 +191,8 @@
         ACAccount *account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         NSString *tID = [_userIdCache objectForKey:account.username];
         NSLog(@"twitter id is %@",_userIdCache);
-        [ZoeTwitterAccount setACAccount:account twitterID:tID];
+        //[ZoeTwitterAccount setACAccount:account twitterID:tID];
+        [ZoeTwitterAccount setACAccount:account twitterID:@"71209705"];
     }
 }
 
