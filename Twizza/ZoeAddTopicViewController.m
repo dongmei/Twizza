@@ -30,11 +30,10 @@
 
 - (id)jsonPostRequest:(NSData *)jsonPostRequestData
 {
-    //NSURL *url = [NSURL URLWithString:@"http://localhost:8888/addNewTopic.php"];
     NSString *requestString = [NSString stringWithFormat:@"%@/addNewTopic.php",TWIZZA_HOST_URL]; 
     NSURL *url = [NSURL URLWithString:requestString];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -58,23 +57,19 @@
 
 #pragma mark - Actions
 -(IBAction)addNewTopic:(id) sender {
-    
     [sender resignFirstResponder];
     
     NSString *topicName,*keywordString;
     topicName = self.addedTopic.text;
     keywordString = self.addedKeywords.text;
-    NSLog(@"add topic:%@,with keywords:%@ ",topicName,keywordString);
     
     NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topicName",keywordString,@"keywordString",[ZoeTwitterAccount getSharedAccount].twitterID,@"userID",nil];
-    NSLog(@"%@",newTopic);
     
     if ([NSJSONSerialization isValidJSONObject:newTopic]) {
         NSError *error=nil;
         NSData *result = [NSJSONSerialization dataWithJSONObject:newTopic options:NSURLRequestUseProtocolCachePolicy error:&error];
         
         if (error == nil && result != NULL) {
-            NSLog(@"json serialization: %@",result);
             [self jsonPostRequest:result];
             NSLog(@"tweet sent successully");
         }

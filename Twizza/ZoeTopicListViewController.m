@@ -9,11 +9,12 @@
 
 #import "ZoeTopicListViewController.h"
 
-/*
 @interface ZoeTopicListViewController()
-- (id)requestDeleteTopic:(NSData *)jsonPostRequestData;
+- (void)fetchData:(NSData *)responseData;
+- (id)jsonPostRequest:(NSData *)jsonPostRequestData;
+- (void)checkForWIFIConnection;
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
 @end
-*/
 
 @implementation ZoeTopicListViewController
 
@@ -31,21 +32,52 @@
 }
 
 #pragma mark - View lifecycle
-/*
-- (void)getKeywords
+- (id)jsonPostRequest:(NSData *)jsonPostRequestData
 {
-    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getkeywords.php?user_id=%@",TWIZZA_HOST_URL,self.userID];
+    NSString *requestString = [NSString stringWithFormat:@"%@/sendweight.php",TWIZZA_HOST_URL]; 
+    NSURL *url = [NSURL URLWithString:requestString];
     
-    NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
-        [self performSelectorOnMainThread:@selector(fetchKeywords:) 
-                               withObject:data waitUntilDone:YES];
-        NSLog(@"complete fetch keyewords");
-    });
-}*/
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d",[jsonPostRequestData length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:jsonPostRequestData];
+    
+    NSError *error = nil;
+    
+    self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    assert(self.connection != nil);
+    
+    if (error == nil) {
+        NSLog(@"connection error:nil");
+        return self.connection;
+    }
+    
+    return nil;
+}    
 
+
+- (void)updateWeight:(NSString *)topidID
+{
+    NSDictionary* topicToBeUpdated = [NSDictionary dictionaryWithObjectsAndKeys:topidID,@"topicID",
+                              self.userID,@"userID",nil];
+    NSLog(@"topic is %@",topicToBeUpdated);
+    
+    if ([NSJSONSerialization isValidJSONObject:topicToBeUpdated]) {
+        NSError *error=nil;
+        NSData *result = [NSJSONSerialization dataWithJSONObject:topicToBeUpdated options:NSURLRequestUseProtocolCachePolicy error:&error];
+        
+        if (error == nil && result != NULL) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performSelectorOnMainThread:@selector(jsonPostRequest:) 
+                                       withObject:result waitUntilDone:YES];
+            });
+            NSLog(@"send out weight update (aft dispatch)");
+        }
+    }       
+}
 
 - (void)fetchData:(NSData *)responseData
 {
@@ -55,7 +87,6 @@
     NSArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                     options:kNilOptions 
                                                       error:&error];
-    //self.topicList = json;
     self.topicList = [NSMutableArray arrayWithArray:json];
     
     NSLog(@"%@",json);
@@ -65,77 +96,21 @@
 
 - (void)requestDeleteTopic:(NSData *)responseData
 {
-    NSLog(@"delete topic: request data");
     //parse out the json data,and get user's topics from server
     NSError* error;
     NSMutableArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                            options:kNilOptions 
                                                              error:&error];
     [(UITableView*)self.view reloadData];
-    
-    NSLog(@"%@",json);
 }
-
-
-/*
-//request Server to delete topic
-- (id)requestDeleteTopic:(NSData *)jsonPostRequestData
-{
-    
-    NSLog(@"request delete topic");
-    NSString *requestString = [NSString stringWithFormat:@"%@/deleteusertopics.php",TWIZZA_HOST_URL]; 
-    NSURL *url = [NSURL URLWithString:requestString];
-    NSLog(@"%@",url);
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
-
-    NSLog(@"set request");
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d",[jsonPostRequestData length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody:jsonPostRequestData];
-    
-    NSError *error = nil;
-    
-    NSLog(@"build connection");
-    self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
-    assert(self.connection != nil);
-    
-    if (error == nil) {
-        NSLog(@"connection error:nil");
-        return self.connection;
-    }
-
-    return nil;
-}*/
-
 
 - (void)deleteTopic
 {
     NSLog(@"deleteTopic called");
 
 
-    NSDictionary *topic= [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];//@"3";
-    //NSLog(@"%@",topic);
+    NSDictionary *topic= [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     NSString* topicID = [topic objectForKey:@"topic_id"];
-    //NSLog(@"topic id is %@",topicID);
-    
-    /*
-    NSDictionary* TopicToBeDeleted = [NSDictionary dictionaryWithObjectsAndKeys:topicID,@"topic_id",self.userID,@"user_id",nil];
-    NSLog(@"%@",TopicToBeDeleted);
-    
-    if ([NSJSONSerialization isValidJSONObject:TopicToBeDeleted]) {
-        NSError *error=nil;
-        NSData *result = [NSJSONSerialization dataWithJSONObject:TopicToBeDeleted options:NSURLRequestUseProtocolCachePolicy error:&error];
-        
-        if (error == nil && result != NULL) {
-            NSLog(@"json serialization: %@",result);
-            [self requestDeleteTopic:result];
-            NSLog(@"topic deleted successully");
-        }
-    }*/
-    
 
     NSString *requestTopicString= [NSString stringWithFormat:@"%@/deleteusertopics.php?user_id=%@&topic_id=%@",TWIZZA_HOST_URL,self.userID,topicID];
     NSLog(@"requestion delete string %@",requestTopicString);
@@ -149,8 +124,6 @@
                                withObject:data waitUntilDone:YES];
         NSLog(@"complete delete topic");
     });
-    
-
 }
 
 
@@ -160,12 +133,11 @@
 	if (editingStyle == UITableViewCellEditingStyleDelete)
 	{
         NSLog(@"call deleteTopic");
-        //[self deleteTopic];
+        [self deleteTopic];
         
         NSLog(@"%d",indexPath.row);
         NSLog(@"%@",self.topicList);
-		//[self.topicList removeObjectAtIndex:indexPath.row];
-        [self.topicList removeLastObject];
+		[self.topicList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}   
 }
@@ -250,19 +222,6 @@
 */
 
 
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Make sure we're referring to the correct segue
-    NSLog(@"segue");
-    if ([[segue identifier] isEqualToString:@"AddTopics"]) {        
-        ZoeAddTopicViewController *vc = [segue destinationViewController];
-        
-        vc.account=[ZoeTwitterAccount getSharedAccount].account;
-    }
-    
-}*/
- 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -272,7 +231,6 @@
     [self checkForWIFIConnection];
 
     //get topic list of this user_name
-    //NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
     self.userID = [ZoeTwitterAccount getSharedAccount].twitterID;
     NSString *requestTopicString= [NSString stringWithFormat:@"%@/getusertopics.php?user_id=%@",TWIZZA_HOST_URL,self.userID];
     
@@ -310,11 +268,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"searchTweets"]) {        
         NSLog(@"segue");
         ZoeTweetSearchViewController *vc = [segue destinationViewController];
         vc.topic = [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        NSString* topicID = [vc.topic objectForKey:@"topic_id"];
+        
+        [self updateWeight:topicID];
     }
 }
 

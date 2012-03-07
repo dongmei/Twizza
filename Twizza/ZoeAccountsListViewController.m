@@ -28,6 +28,9 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
+    
+    //[self performSegueWithIdentifier:@"ShowTweetLists" sender:self];
+    
     if (self){
         _imageCache = [[NSCache alloc] init];
         [_imageCache setName:@"TWImageCache"];
@@ -50,7 +53,6 @@
 }
 
 #pragma mark - Data handling
-
 - (void)fetchData
 {
     if (_accountStore == nil) { 
@@ -62,6 +64,7 @@
             [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) {
                 if(granted) {
                     self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];  
+                    NSLog(@"account is %@",[self.accounts objectAtIndex:0]);
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData]; 
                     });
@@ -69,6 +72,10 @@
             }];
         }
     }
+    
+    
+    
+    
 }
 
 #pragma mark - View lifecycle
@@ -186,13 +193,14 @@
 // Do some customisation of our new view when a table item has been selected
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     if ([[segue identifier] isEqualToString:@"ShowTweetLists"]) {
         //set the account 
         ACAccount *account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         NSString *tID = [_userIdCache objectForKey:account.username];
         NSLog(@"twitter id is %@",_userIdCache);
-        //[ZoeTwitterAccount setACAccount:account twitterID:tID];
-        [ZoeTwitterAccount setACAccount:account twitterID:@"71209705"];
+        [ZoeTwitterAccount setACAccount:account twitterID:tID];
+        //[ZoeTwitterAccount setACAccount:account twitterID:@"71209705"];
     }
 }
 
