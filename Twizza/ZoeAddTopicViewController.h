@@ -17,6 +17,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet UITextField *addedTopic;
+@property (strong, nonatomic) IBOutlet UITextField *addedKeywords;
 @property (nonatomic, retain) NSURLConnection * connection; 
 
 -(IBAction)addNewTopic:(id) sender;

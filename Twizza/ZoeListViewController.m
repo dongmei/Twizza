@@ -185,6 +185,8 @@
     
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
     
+    
+    /*
     //Draw frame to make labels within the prototype cell
     UILabel *cellNameLabel = [[UILabel alloc] initWithFrame: CGRectZero];
     [cellNameLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
@@ -203,8 +205,9 @@
 	CGFloat h = result2.size.height;//Get text box height
     NSLog(@"height is %@",h);
     [cell addSubview:cellContentLabel];
+
     
-    /*
+    
     UILabel *cellContentLabel = [[UILabel alloc] initWithFrame: CGRectMake(60, 50, 260, 50)];
     [cellContentLabel setFont:[UIFont systemFontOfSize:14]];//textLabel.font = [NTLNStatusCell textFont];
     cellContentLabel.numberOfLines = 5;//max of lines
@@ -213,7 +216,6 @@
     [cell addSubview:cellContentLabel];
     //[cellContentLabel setText:[tweet valueForKeyPath:@"user.profile_image_url"]];*/
     
-    /*
     //Use viewWithTag to display tweets
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
     [cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
@@ -226,7 +228,6 @@
     NSURL *imageURL = [NSURL URLWithString:imageURLString];
     NSData *profileImageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     [cellPofileImage setImage:[UIImage imageWithData:profileImageData]];
-     */
     
     return cell;
 }

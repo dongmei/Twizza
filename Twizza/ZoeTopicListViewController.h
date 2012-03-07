@@ -17,11 +17,17 @@
 
 
 @interface ZoeTopicListViewController : UITableViewController
+{
+    NSURLConnection * _connection;
+}
 
-@property (strong, nonatomic) NSArray *topicList;
+@property (strong, nonatomic) NSMutableArray *topicList;
 @property (strong, nonatomic) NSArray *selectedKeywords;
+@property (strong, nonatomic) NSString *userID;
+@property (nonatomic, retain) NSURLConnection * connection; 
 
-- (void)getKeywords;
-
+//- (void)getKeywords;
+//- (void)requestDeleteTopic;
+- (void)deleteTopic;
 
 @end

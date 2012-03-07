@@ -9,10 +9,18 @@
 
 #import "ZoeTopicListViewController.h"
 
+/*
+@interface ZoeTopicListViewController()
+- (id)requestDeleteTopic:(NSData *)jsonPostRequestData;
+@end
+*/
+
 @implementation ZoeTopicListViewController
 
 @synthesize topicList = _topicList;
 @synthesize selectedKeywords = _selectedKeywords;
+@synthesize userID = _userID;
+@synthesize connection = _connection;
 
 - (void)didReceiveMemoryWarning
 {
@@ -23,8 +31,157 @@
 }
 
 #pragma mark - View lifecycle
+/*
+- (void)getKeywords
+{
+    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getkeywords.php?user_id=%@",TWIZZA_HOST_URL,self.userID];
+    
+    NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
+        [self performSelectorOnMainThread:@selector(fetchKeywords:) 
+                               withObject:data waitUntilDone:YES];
+        NSLog(@"complete fetch keyewords");
+    });
+}*/
+
+
+- (void)fetchData:(NSData *)responseData
+{
+    NSLog(@"topic list: fetch data");
+    //parse out the json data,and get user's topics from server
+    NSError* error;
+    NSMutableArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
+                                                    options:kNilOptions 
+                                                      error:&error];
+    self.topicList = json;
+    
+    NSLog(@"%@",json);
+    [(UITableView*)self.view reloadData];
+    NSLog(@"fetchData: reload data successfully");
+}
+
+- (void)requestDeleteTopic:(NSData *)responseData
+{
+    NSLog(@"delete topic: request data");
+    //parse out the json data,and get user's topics from server
+    NSError* error;
+    NSMutableArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
+                                                           options:kNilOptions 
+                                                             error:&error];
+    [(UITableView*)self.view reloadData];
+    
+    NSLog(@"%@",json);
+}
+
+
+/*
+//request Server to delete topic
+- (id)requestDeleteTopic:(NSData *)jsonPostRequestData
+{
+    
+    NSLog(@"request delete topic");
+    NSString *requestString = [NSString stringWithFormat:@"%@/deleteusertopics.php",TWIZZA_HOST_URL]; 
+    NSURL *url = [NSURL URLWithString:requestString];
+    NSLog(@"%@",url);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
+
+    NSLog(@"set request");
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d",[jsonPostRequestData length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody:jsonPostRequestData];
+    
+    NSError *error = nil;
+    
+    NSLog(@"build connection");
+    self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    assert(self.connection != nil);
+    
+    if (error == nil) {
+        NSLog(@"connection error:nil");
+        return self.connection;
+    }
+
+    return nil;
+}*/
+
+
+- (void)deleteTopic
+{
+    NSLog(@"deleteTopic called");
+
+
+    NSDictionary *topic= [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];//@"3";
+    //NSLog(@"%@",topic);
+    NSString* topicID = [topic objectForKey:@"topic_id"];
+    //NSLog(@"topic id is %@",topicID);
+    
+    /*
+    NSDictionary* TopicToBeDeleted = [NSDictionary dictionaryWithObjectsAndKeys:topicID,@"topic_id",self.userID,@"user_id",nil];
+    NSLog(@"%@",TopicToBeDeleted);
+    
+    if ([NSJSONSerialization isValidJSONObject:TopicToBeDeleted]) {
+        NSError *error=nil;
+        NSData *result = [NSJSONSerialization dataWithJSONObject:TopicToBeDeleted options:NSURLRequestUseProtocolCachePolicy error:&error];
+        
+        if (error == nil && result != NULL) {
+            NSLog(@"json serialization: %@",result);
+            [self requestDeleteTopic:result];
+            NSLog(@"topic deleted successully");
+        }
+    }*/
+    
+
+    NSString *requestTopicString= [NSString stringWithFormat:@"%@/deleteusertopics.php?user_id=%@&topic_id=%@",TWIZZA_HOST_URL,self.userID,topicID];
+    NSLog(@"requestion delete string %@",requestTopicString);
+    
+    NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
+        NSLog(@"data is %@",data);
+        [self performSelectorOnMainThread:@selector(requestDeleteTopic:) 
+                               withObject:data waitUntilDone:YES];
+        NSLog(@"complete delete topic");
+    });
+    
+
+}
+
+
+//swipe to delete topic
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (editingStyle == UITableViewCellEditingStyleDelete)
+	{
+        NSLog(@"call deleteTopic");
+        //[self deleteTopic];
+        
+		[self.topicList removeObjectAtIndex:indexPath.row];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	}   
+}
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*ZoeTweetSearchViewController *searchVC;
+     
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -78,23 +235,6 @@
     }
 }
 
-#pragma mark - Table view delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
-}
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*ZoeTweetSearchViewController *searchVC;
-    
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 
 
@@ -104,34 +244,6 @@
 {
 }
 */
-
-- (void)getKeywords
-{
-    NSString *userID = [ZoeTwitterAccount getSharedAccount].twitterID;
-    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getkeywords.php?user_id=%@",TWIZZA_HOST_URL,userID];
-    
-    NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
-        [self performSelectorOnMainThread:@selector(fetchKeywords:) 
-                               withObject:data waitUntilDone:YES];
-        NSLog(@"complete fetch keyewords");
-    });
-}
-
-
-- (void)fetchData:(NSData *)responseData
-{
-    NSLog(@"topic list: fetch data");
-    //parse out the json data,and get user's topics from server
-    NSError* error;
-    NSArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
-                                                         options:kNilOptions 
-                                                           error:&error];
-    self.topicList = json;
-    [(UITableView*)self.view reloadData];
-}
 
 
 /*
@@ -157,8 +269,8 @@
 
     //get topic list of this user_name
     //NSString *accountName = [ZoeTwitterAccount getSharedAccount].account.username;
-    NSString *userID = [ZoeTwitterAccount getSharedAccount].twitterID;
-    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getuserstopics.php?user_id=%@",TWIZZA_HOST_URL,userID];
+    self.userID = [ZoeTwitterAccount getSharedAccount].twitterID;
+    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getusertopics.php?user_id=%@",TWIZZA_HOST_URL,self.userID];
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     

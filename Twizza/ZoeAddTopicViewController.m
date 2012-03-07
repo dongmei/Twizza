@@ -16,7 +16,7 @@
 
 @implementation ZoeAddTopicViewController
 
-@synthesize addedTopic;
+@synthesize addedTopic,addedKeywords;
 @synthesize connection = _connection;
 
 - (void)didReceiveMemoryWarning
@@ -61,11 +61,12 @@
     
     [sender resignFirstResponder];
     
-    NSString *topicName;
+    NSString *topicName,*keywordString;
     topicName = self.addedTopic.text;
-    NSLog(@"%@",topicName);
+    keywordString = self.addedKeywords.text;
+    NSLog(@"add topic:%@,with keywords:%@ ",topicName,keywordString);
     
-    NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topic",[ZoeTwitterAccount getSharedAccount].account.username,@"user_name",nil];
+    NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topicName",keywordString,@"keywordString",[ZoeTwitterAccount getSharedAccount].twitterID,@"userID",nil];
     NSLog(@"%@",newTopic);
     
     if ([NSJSONSerialization isValidJSONObject:newTopic]) {

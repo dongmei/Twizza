@@ -44,6 +44,7 @@
 {
     [_imageCache removeAllObjects];
     [_usernameCache removeAllObjects];
+    NSLog(@"memorywarning");
     [_userIdCache removeAllObjects];
     [super didReceiveMemoryWarning];
 }
@@ -126,6 +127,8 @@
                         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
                     });
                 }
+            }else {
+                NSLog(@"Twitter error, HTTP response: %i", [urlResponse statusCode]);
             }
         }];        
     }
@@ -187,6 +190,7 @@
         //set the account 
         ACAccount *account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         NSString *tID = [_userIdCache objectForKey:account.username];
+        NSLog(@"twitter id is %@",_userIdCache);
         [ZoeTwitterAccount setACAccount:account twitterID:tID];
     }
 }
