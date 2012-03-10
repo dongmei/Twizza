@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "ZoeAccountsListViewController.h"
+#import "ZoeTwitterAccount.h"
 
 @interface ZoeAccountGateway : UIViewController
-
 {
-    ZoeAccountsListViewController *cvc;
+    ZoeAccountsListViewController *accountListVC;
 }
 
 @property(strong,nonatomic)IBOutlet ZoeAccountsListViewController *accountListVC;
 
-- (IBAction)testMoveView:(id)sender;
+@property(strong,nonatomic)NSTimer*  timer;
+
 
 @end

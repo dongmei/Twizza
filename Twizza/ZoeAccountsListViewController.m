@@ -11,8 +11,6 @@
 
 @interface ZoeAccountsListViewController ()
 - (void)fetchData;
-- (NSDictionary *)getDictionary:(NSString *)fileName;
-- (id)readPlist:(NSString *)fileName;
 
 @property (strong, nonatomic) NSCache *usernameCache;
 @property (strong, nonatomic) NSCache *imageCache;
@@ -23,17 +21,13 @@
 
 @synthesize accounts = _accounts;
 @synthesize accountStore = _accountStore;
-
 @synthesize imageCache = _imageCache;
 @synthesize usernameCache = _usernameCache;
 @synthesize userIdCache = _userIdCache;
 
-
--(id)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
-    NSLog(@"init zoeAccountsList");
+-(id)initWithStyle:(UITableViewStyle)style{
+    self = [super initWithStyle:style];
     
-    //[self performSegueWithIdentifier:@"ShowTweetLists" sender:self];
     if (self){
         _imageCache = [[NSCache alloc] init];
         [_imageCache setName:@"TWImageCache"];
@@ -42,8 +36,8 @@
         _userIdCache = [[NSCache alloc] init];
         [_userIdCache setName:@"TWUserIDCache"];
         [self fetchData];
+
     }
-    
     return self;
 }
 
@@ -51,33 +45,9 @@
 {
     [_imageCache removeAllObjects];
     [_usernameCache removeAllObjects];
-    NSLog(@"memorywarning");
     [_userIdCache removeAllObjects];
     [super didReceiveMemoryWarning];
 }
-
-
-#pragma mark - pList
-- (id)readPlist:(NSString *)fileName {  
-    NSData *plistData;  
-    NSString *error;  
-    NSPropertyListFormat format;  
-    id plist;  
-    
-    NSString *localizedPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];  
-    plistData = [NSData dataWithContentsOfFile:localizedPath];   
-    
-    plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];  
-    if (!plist) {  
-        NSLog(@"Error reading plist from file '%s', error = '%s'", [localizedPath UTF8String], [error UTF8String]);  
-    }  
-    
-    return plist;  
-} 
-
-- (NSDictionary *)getDictionary:(NSString *)fileName {  
-    return (NSDictionary *)[self readPlist:fileName];  
-} 
 
 #pragma mark - Data handling
 - (void)fetchData
@@ -116,43 +86,11 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self checkForWIFIConnection];
-    
-    /*
-    NSDictionary *userInfo = [self getDictionary:@"accountList"];
-    int i;
-    for (i=0; i<[self.accountStore.accounts count]; i++) {
-        ACAccount *account = [self.accountStore.accounts objectAtIndex:i];
-        NSLog(@"%@",account.username);
-        NSLog(@"%@",[userInfo objectForKey:@"accountName"]);
-        if ([[userInfo objectForKey:@"accountName"] isEqualToString:account.username]) {
-            [ZoeTwitterAccount setACAccount:account twitterID:[userInfo objectForKey:@"twitterID"]];
-            NSLog(@"change view");
-            [self performSegueWithIdentifier:@"ShowTweetListsFromPlist" sender:self];
-        }
-    }*/
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    /*
-    //check pList
-    NSDictionary *userInfo = [self getDictionary:@"accountList"];
-    int i;
-    
-    [self performSegueWithIdentifier:@"ShowMask" sender:self];
-    
-    for (i=0; i<[self.accountStore.accounts count]; i++) {
-        ACAccount *account = [self.accountStore.accounts objectAtIndex:i];
-        NSLog(@"%@",account.username);
-        NSLog(@"%@",[userInfo objectForKey:@"accountName"]);
-        if ([[userInfo objectForKey:@"accountName"] isEqualToString:account.username]) {
-            [ZoeTwitterAccount setACAccount:account twitterID:[userInfo objectForKey:@"twitterID"]];
-            NSLog(@"change view");
-            [self performSegueWithIdentifier:@"ShowTweetListsFromPlist" sender:self];
-        }
-    }*/
 }
 
 #pragma mark - Table view data source
@@ -257,7 +195,6 @@
 // Do some customisation of our new view when a table item has been selected
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
     if ([[segue identifier] isEqualToString:@"ShowTweetLists"]) {
         //set the account 
         ACAccount *account = [self.accounts objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
@@ -265,11 +202,6 @@
         NSLog(@"twitter id is %@",_userIdCache);
         [ZoeTwitterAccount setACAccount:account twitterID:tID];
         //[ZoeTwitterAccount setACAccount:account twitterID:@"71209705"];
-    }
-    
-    if ([[segue identifier] isEqualToString:@"ShowTweetListsFromPlist"]) {
-        //set the account 
-        NSLog(@" ShowTweetListsFromPlist");
     }
 }
 

@@ -19,7 +19,6 @@
 @property (strong, nonatomic) ACAccount *account;
 @property (strong, nonatomic) NSString *twitterID;
 
-//-(id)initWithACAccount:(ACAccount*)acc;
 -(id)initWithACAccount:(ACAccount*)acc withID:(NSString*)twID;
 
 +(ZoeTwitterAccount*)getSharedAccount;
