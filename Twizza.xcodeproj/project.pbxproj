@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793012EE150BA34900A72681 /* ZoeAccountGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 793012ED150BA34900A72681 /* ZoeAccountGateway.m */; };
 		793FAED814E6742F00E9C25D /* ZoeTopicListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 793FAED714E6742F00E9C25D /* ZoeTopicListViewController.m */; };
 		794C015A149CAABF0014FF25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C0159149CAABF0014FF25 /* UIKit.framework */; };
 		794C015C149CAABF0014FF25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794C015B149CAABF0014FF25 /* Foundation.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		793012EC150BA34900A72681 /* ZoeAccountGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeAccountGateway.h; sourceTree = "<group>"; };
+		793012ED150BA34900A72681 /* ZoeAccountGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeAccountGateway.m; sourceTree = "<group>"; };
 		793FAED614E6742F00E9C25D /* ZoeTopicListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTopicListViewController.h; sourceTree = "<group>"; };
 		793FAED714E6742F00E9C25D /* ZoeTopicListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTopicListViewController.m; sourceTree = "<group>"; };
 		794C0155149CAABF0014FF25 /* Twizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twizza.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +184,8 @@
 				79FDCFF214EBDB6300ADC72D /* ZoeAddTopicViewController.m */,
 				79EFCE1214F4BD05003CBB70 /* ZoeTweetSearchViewController.h */,
 				79EFCE1314F4BD05003CBB70 /* ZoeTweetSearchViewController.m */,
+				793012EC150BA34900A72681 /* ZoeAccountGateway.h */,
+				793012ED150BA34900A72681 /* ZoeAccountGateway.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				79FDCFF314EBDB6300ADC72D /* ZoeAddTopicViewController.m in Sources */,
 				79EFCE1414F4BD06003CBB70 /* ZoeTweetSearchViewController.m in Sources */,
 				79BCFD22150129A100994273 /* Reachability.m in Sources */,
+				793012EE150BA34900A72681 /* ZoeAccountGateway.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

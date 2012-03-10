@@ -31,6 +31,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
+    NSLog(@"init zoeAccountsList");
     
     //[self performSegueWithIdentifier:@"ShowTweetLists" sender:self];
     if (self){
@@ -115,6 +116,20 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self checkForWIFIConnection];
+    
+    /*
+    NSDictionary *userInfo = [self getDictionary:@"accountList"];
+    int i;
+    for (i=0; i<[self.accountStore.accounts count]; i++) {
+        ACAccount *account = [self.accountStore.accounts objectAtIndex:i];
+        NSLog(@"%@",account.username);
+        NSLog(@"%@",[userInfo objectForKey:@"accountName"]);
+        if ([[userInfo objectForKey:@"accountName"] isEqualToString:account.username]) {
+            [ZoeTwitterAccount setACAccount:account twitterID:[userInfo objectForKey:@"twitterID"]];
+            NSLog(@"change view");
+            [self performSegueWithIdentifier:@"ShowTweetListsFromPlist" sender:self];
+        }
+    }*/
 }
 
 - (void)viewWillAppear:(BOOL)animated
