@@ -11,6 +11,9 @@
 
 @interface ZoeAccountsListViewController ()
 - (void)fetchData;
+- (NSDictionary *)getDictionary:(NSString *)fileName;
+- (id)readPlist:(NSString *)fileName;
+
 @property (strong, nonatomic) NSCache *usernameCache;
 @property (strong, nonatomic) NSCache *imageCache;
 @property (strong, nonatomic) NSCache *userIdCache;
@@ -30,7 +33,6 @@
     self = [super initWithCoder:aDecoder];
     
     //[self performSegueWithIdentifier:@"ShowTweetLists" sender:self];
-    
     if (self){
         _imageCache = [[NSCache alloc] init];
         [_imageCache setName:@"TWImageCache"];
@@ -40,6 +42,7 @@
         [_userIdCache setName:@"TWUserIDCache"];
         [self fetchData];
     }
+    
     return self;
 }
 
@@ -51,6 +54,29 @@
     [_userIdCache removeAllObjects];
     [super didReceiveMemoryWarning];
 }
+
+
+#pragma mark - pList
+- (id)readPlist:(NSString *)fileName {  
+    NSData *plistData;  
+    NSString *error;  
+    NSPropertyListFormat format;  
+    id plist;  
+    
+    NSString *localizedPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];  
+    plistData = [NSData dataWithContentsOfFile:localizedPath];   
+    
+    plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];  
+    if (!plist) {  
+        NSLog(@"Error reading plist from file '%s', error = '%s'", [localizedPath UTF8String], [error UTF8String]);  
+    }  
+    
+    return plist;  
+} 
+
+- (NSDictionary *)getDictionary:(NSString *)fileName {  
+    return (NSDictionary *)[self readPlist:fileName];  
+} 
 
 #pragma mark - Data handling
 - (void)fetchData
@@ -64,7 +90,7 @@
             [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) {
                 if(granted) {
                     self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];  
-                    NSLog(@"account is %@",[self.accounts objectAtIndex:0]);
+                    //NSLog(@"account is %@",[self.accounts objectAtIndex:0]);
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData]; 
                     });
@@ -89,6 +115,29 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self checkForWIFIConnection];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /*
+    //check pList
+    NSDictionary *userInfo = [self getDictionary:@"accountList"];
+    int i;
+    
+    [self performSegueWithIdentifier:@"ShowMask" sender:self];
+    
+    for (i=0; i<[self.accountStore.accounts count]; i++) {
+        ACAccount *account = [self.accountStore.accounts objectAtIndex:i];
+        NSLog(@"%@",account.username);
+        NSLog(@"%@",[userInfo objectForKey:@"accountName"]);
+        if ([[userInfo objectForKey:@"accountName"] isEqualToString:account.username]) {
+            [ZoeTwitterAccount setACAccount:account twitterID:[userInfo objectForKey:@"twitterID"]];
+            NSLog(@"change view");
+            [self performSegueWithIdentifier:@"ShowTweetListsFromPlist" sender:self];
+        }
+    }*/
 }
 
 #pragma mark - Table view data source
@@ -201,6 +250,11 @@
         NSLog(@"twitter id is %@",_userIdCache);
         [ZoeTwitterAccount setACAccount:account twitterID:tID];
         //[ZoeTwitterAccount setACAccount:account twitterID:@"71209705"];
+    }
+    
+    if ([[segue identifier] isEqualToString:@"ShowTweetListsFromPlist"]) {
+        //set the account 
+        NSLog(@" ShowTweetListsFromPlist");
     }
 }
 
