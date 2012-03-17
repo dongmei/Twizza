@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZoeTwitterAccount.h"
 #import "constants.h"
+#import "ZoeTweet.h"
 
 @interface ZoeTweetSearchViewController : UITableViewController
 {

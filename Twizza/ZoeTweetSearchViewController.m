@@ -173,4 +173,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"TweetView"]) {        
+        //ZoeTweetViewController *vc = [segue destinationViewController];
+        
+        NSLog(@"row is %d",[[self.tableView indexPathForSelectedRow] row]);
+        NSLog(@"tweet is %@",[[self.tweetList objectForKey:@"results"] objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]);
+        NSDictionary *dic = [[self.tweetList objectForKey:@"results"] objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        [ZoeTweet setTweet:dic];
+        NSLog(@"Topic, set zoeTweet user name is %@",[[ZoeTweet getSharedTweet]getUserName]);
+    }
+}
+
 @end

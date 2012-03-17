@@ -56,6 +56,7 @@
     TWRequest *request = [[TWRequest alloc] initWithURL:url 
                                              parameters:param 
                                           requestMethod:TWRequestMethodGET];
+    NSLog(@"Fetch data, account is %@",[ZoeTwitterAccount getSharedAccount].account);
     [request setAccount:[ZoeTwitterAccount getSharedAccount].account];  
     
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
@@ -65,7 +66,6 @@
             
             if (jsonResult != nil) {
                 self.timeline = jsonResult;
-                
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });                
@@ -85,13 +85,22 @@
 
 
 #pragma mark - Compose Tweet
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure we're referring to the correct segue
     if ([[segue identifier] isEqualToString:@"ComposeTweet"]) {        
         ZoeTweetComposeViewController *vc = [segue destinationViewController];
         vc.tweetComposeDelegate = self;
+    }
+    
+    
+    if ([[segue identifier] isEqualToString:@"TweetView"]) {        
+        //ZoeTweetViewController *vc = [segue destinationViewController];
+               
+        NSDictionary *dic = [self.timeline objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        [ZoeTweet setTweet:dic];
+        NSLog(@"dic is %@",dic);
+        NSLog(@"set zoeTweet user name is %@",[[ZoeTweet getSharedTweet]getUserName]);
     }
 }
 
@@ -102,28 +111,6 @@
 {
     [super viewDidLoad];
     NSLog(@"%@",TWIZZA_HOST_URL);
-    
-    /*
-    
-    TWRequest *fetchUserInfoRequest = [[TWRequest alloc] 
-                                              initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
-                                              parameters:[NSDictionary dictionaryWithObjectsAndKeys:[ZoeTwitterAccount getSharedAccount].account.username, @"screen_name", nil]
-                                              requestMethod:TWRequestMethodGET];
-
-    [fetchUserInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        NSLog(@"status %d",[urlResponse statusCode]);
-        if ([urlResponse statusCode] == 200) {
-            //NSError *error;
-            id userInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
-            if (userInfo != nil) {
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    NSLog(@"-id %@",(int)[userInfo valueForKey:@"id_str"]);
-                });
-            }
-        }
-    }];    
-    */
-
 }
 
 - (void)viewDidUnload
@@ -184,6 +171,7 @@
     }
     
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
+    NSLog(@"row number is %d",[indexPath row]);
     
     
     /*

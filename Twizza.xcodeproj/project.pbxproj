@@ -24,6 +24,8 @@
 		79AD238514A4BEC80090AA97 /* ZoeTweetComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD238414A4BEC80090AA97 /* ZoeTweetComposeViewController.m */; };
 		79BCFD22150129A100994273 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BCFD20150129A100994273 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		79BCFD24150129E300994273 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BCFD23150129E300994273 /* SystemConfiguration.framework */; };
+		79C43B79151450260086B5FF /* ZoeTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C43B78151450260086B5FF /* ZoeTweetViewController.m */; };
+		79C43B7D1514637B0086B5FF /* ZoeTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C43B7C1514637B0086B5FF /* ZoeTweet.m */; };
 		79E646441507C08400E4EA79 /* accountList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79E646431507C08400E4EA79 /* accountList.plist */; };
 		79EFCE1414F4BD06003CBB70 /* ZoeTweetSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EFCE1314F4BD05003CBB70 /* ZoeTweetSearchViewController.m */; };
 		79F4177814EB50BE0052067D /* ZoeTwitterAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */; };
@@ -66,6 +68,10 @@
 		79BCFD20150129A100994273 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		79BCFD21150129A100994273 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		79BCFD23150129E300994273 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		79C43B77151450260086B5FF /* ZoeTweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetViewController.h; sourceTree = "<group>"; };
+		79C43B78151450260086B5FF /* ZoeTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetViewController.m; sourceTree = "<group>"; };
+		79C43B7B1514637B0086B5FF /* ZoeTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweet.h; sourceTree = "<group>"; };
+		79C43B7C1514637B0086B5FF /* ZoeTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweet.m; sourceTree = "<group>"; };
 		79E646431507C08400E4EA79 /* accountList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = accountList.plist; sourceTree = "<group>"; };
 		79EFCE1214F4BD05003CBB70 /* ZoeTweetSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetSearchViewController.h; sourceTree = "<group>"; };
 		79EFCE1314F4BD05003CBB70 /* ZoeTweetSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetSearchViewController.m; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				79EFCE1314F4BD05003CBB70 /* ZoeTweetSearchViewController.m */,
 				793012EC150BA34900A72681 /* ZoeAccountGateway.h */,
 				793012ED150BA34900A72681 /* ZoeAccountGateway.m */,
+				79C43B77151450260086B5FF /* ZoeTweetViewController.h */,
+				79C43B78151450260086B5FF /* ZoeTweetViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -218,6 +226,8 @@
 			children = (
 				79F4177614EB50BE0052067D /* ZoeTwitterAccount.h */,
 				79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */,
+				79C43B7B1514637B0086B5FF /* ZoeTweet.h */,
+				79C43B7C1514637B0086B5FF /* ZoeTweet.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -304,6 +314,8 @@
 				79EFCE1414F4BD06003CBB70 /* ZoeTweetSearchViewController.m in Sources */,
 				79BCFD22150129A100994273 /* Reachability.m in Sources */,
 				793012EE150BA34900A72681 /* ZoeAccountGateway.m in Sources */,
+				79C43B79151450260086B5FF /* ZoeTweetViewController.m in Sources */,
+				79C43B7D1514637B0086B5FF /* ZoeTweet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

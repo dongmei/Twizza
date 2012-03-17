@@ -84,6 +84,8 @@
     NSLog(@"topic list: fetch data");
     //parse out the json data,and get user's topics from server
     NSError* error;
+    
+    NSLog(@"response data is %@",responseData);
     NSArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                     options:kNilOptions 
                                                       error:&error];
@@ -226,7 +228,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"Topic list: view did load");
     
     [self checkForWIFIConnection];
 
