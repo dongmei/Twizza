@@ -26,6 +26,7 @@
 		79BCFD24150129E300994273 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BCFD23150129E300994273 /* SystemConfiguration.framework */; };
 		79C43B79151450260086B5FF /* ZoeTweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C43B78151450260086B5FF /* ZoeTweetViewController.m */; };
 		79C43B7D1514637B0086B5FF /* ZoeTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C43B7C1514637B0086B5FF /* ZoeTweet.m */; };
+		79C43B8015147D350086B5FF /* ZoeSuggestCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C43B7F15147D350086B5FF /* ZoeSuggestCategoryViewController.m */; };
 		79E646441507C08400E4EA79 /* accountList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79E646431507C08400E4EA79 /* accountList.plist */; };
 		79EFCE1414F4BD06003CBB70 /* ZoeTweetSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EFCE1314F4BD05003CBB70 /* ZoeTweetSearchViewController.m */; };
 		79F4177814EB50BE0052067D /* ZoeTwitterAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F4177714EB50BE0052067D /* ZoeTwitterAccount.m */; };
@@ -72,6 +73,8 @@
 		79C43B78151450260086B5FF /* ZoeTweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetViewController.m; sourceTree = "<group>"; };
 		79C43B7B1514637B0086B5FF /* ZoeTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweet.h; sourceTree = "<group>"; };
 		79C43B7C1514637B0086B5FF /* ZoeTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweet.m; sourceTree = "<group>"; };
+		79C43B7E15147D350086B5FF /* ZoeSuggestCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeSuggestCategoryViewController.h; sourceTree = "<group>"; };
+		79C43B7F15147D350086B5FF /* ZoeSuggestCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeSuggestCategoryViewController.m; sourceTree = "<group>"; };
 		79E646431507C08400E4EA79 /* accountList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = accountList.plist; sourceTree = "<group>"; };
 		79EFCE1214F4BD05003CBB70 /* ZoeTweetSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoeTweetSearchViewController.h; sourceTree = "<group>"; };
 		79EFCE1314F4BD05003CBB70 /* ZoeTweetSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoeTweetSearchViewController.m; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				793012ED150BA34900A72681 /* ZoeAccountGateway.m */,
 				79C43B77151450260086B5FF /* ZoeTweetViewController.h */,
 				79C43B78151450260086B5FF /* ZoeTweetViewController.m */,
+				79C43B7E15147D350086B5FF /* ZoeSuggestCategoryViewController.h */,
+				79C43B7F15147D350086B5FF /* ZoeSuggestCategoryViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				793012EE150BA34900A72681 /* ZoeAccountGateway.m in Sources */,
 				79C43B79151450260086B5FF /* ZoeTweetViewController.m in Sources */,
 				79C43B7D1514637B0086B5FF /* ZoeTweet.m in Sources */,
+				79C43B8015147D350086B5FF /* ZoeSuggestCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

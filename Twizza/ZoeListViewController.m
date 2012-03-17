@@ -171,8 +171,6 @@
     }
     
     id tweet = [self.timeline objectAtIndex:[indexPath row]];
-    NSLog(@"row number is %d",[indexPath row]);
-    
     
     /*
     //Draw frame to make labels within the prototype cell
