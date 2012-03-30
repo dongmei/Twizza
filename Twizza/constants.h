@@ -16,6 +16,10 @@
 #define TWITTER_SERACH_WITHOUT_Q @"http://search.twitter.com/search.json?q="
 #define TWITTER_FETCH_SUGGESTION @"https://api.twitter.com/1/users/suggestions.json"
 
+//php file name
+#define ADD_NEW_TOPIC @"addNewTopic"
+#define UPDATE_TWITTER_CATEGORY @"updatetwitercategory"
+
 
 #ifdef DEBUG
 #define TWIZZA_HOST_URL @"http://localhost:8888"

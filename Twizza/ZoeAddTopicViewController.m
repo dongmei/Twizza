@@ -8,8 +8,6 @@
 
 #import "ZoeAddTopicViewController.h"
 
-
-
 @interface ZoeAddTopicViewController()
 - (id)jsonPostRequest:(NSData *)jsonPostRequestData;
 @end
@@ -30,7 +28,7 @@
 
 - (id)jsonPostRequest:(NSData *)jsonPostRequestData
 {
-    NSString *requestString = [NSString stringWithFormat:@"%@/addNewTopic.php",TWIZZA_HOST_URL]; 
+    NSString *requestString = [NSString stringWithFormat:@"%@/%@.php",TWIZZA_HOST_URL,ADD_NEW_TOPIC]; 
     NSURL *url = [NSURL URLWithString:requestString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];

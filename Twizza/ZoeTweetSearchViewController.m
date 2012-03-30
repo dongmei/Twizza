@@ -13,7 +13,7 @@
 @end
 
 @implementation ZoeTweetSearchViewController
-@synthesize tweetList = _tweetList;
+@synthesize tweetList;
 @synthesize topic;
 
 - (void)didReceiveMemoryWarning
@@ -46,8 +46,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    id tweets = [self.tweetList objectForKey:@"results"];
-    id tweet = [tweets objectAtIndex:indexPath.row];
+    //id tweets = [self.tweetList objectForKey:@"results"];
+    id tweet = [self.tweetList objectAtIndex:indexPath.row];
     
     //id tweet = [self.tweetList objectAtIndex:[indexPath row]];
     
@@ -117,9 +117,13 @@
         {
             
             NSError *jsonError = nil;
-            id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+            NSDictionary *jsonResult = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
             if (jsonResult != nil) {
-                self.tweetList = jsonResult;
+                if (self.tweetList == NULL)
+                    self.tweetList = [NSMutableArray arrayWithCapacity:10];
+                
+                [self.tweetList addObjectsFromArray:[jsonResult objectForKey:@"results"]];
+
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });                
@@ -178,11 +182,11 @@
     if ([[segue identifier] isEqualToString:@"TweetView"]) {        
         //ZoeTweetViewController *vc = [segue destinationViewController];
         
-        NSLog(@"row is %d",[[self.tableView indexPathForSelectedRow] row]);
-        NSLog(@"tweet is %@",[[self.tweetList objectForKey:@"results"] objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]);
-        NSDictionary *dic = [[self.tweetList objectForKey:@"results"] objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        //NSLog(@"row is %d",[[self.tableView indexPathForSelectedRow] row]);
+       // NSLog(@"tweet is %@",[[self.tweetList objectForKey:@"results"] objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]);
+        NSDictionary *dic = [self.tweetList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         [ZoeTweet setTweet:dic];
-        NSLog(@"Topic, set zoeTweet user name is %@",[[ZoeTweet getSharedTweet]getUserName]);
+        //NSLog(@"Topic, set zoeTweet user name is %@",[[ZoeTweet getSharedTweet]getUserName]);
     }
 }
 

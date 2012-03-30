@@ -16,7 +16,7 @@
     NSDictionary *topic;
 }
 
-@property (strong, nonatomic) id tweetList;
+@property (strong, atomic) NSMutableArray *tweetList;
 @property (strong, nonatomic) NSDictionary *topic;
 
 @end

@@ -81,47 +81,38 @@
 
 - (void)fetchData:(NSData *)responseData
 {
-    NSLog(@"topic list: fetch data");
     //parse out the json data,and get user's topics from server
     NSError* error;
     
-    NSLog(@"response data is %@",responseData);
     NSArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
                                                     options:kNilOptions 
                                                       error:&error];
     self.topicList = [NSMutableArray arrayWithArray:json];
     
-    NSLog(@"%@",json);
     [(UITableView*)self.view reloadData];
-    NSLog(@"fetchData: reload data successfully");
 }
 
 - (void)requestDeleteTopic:(NSData *)responseData
 {
     //parse out the json data,and get user's topics from server
-    NSError* error;
-    NSMutableArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
-                                                           options:kNilOptions 
-                                                             error:&error];
+    //NSError* error;
+    //NSMutableArray* json = [NSJSONSerialization JSONObjectWithData:responseData //1
+                                                           //options:kNilOptions 
+                                                             // error:&error];
     [(UITableView*)self.view reloadData];
 }
 
 - (void)deleteTopic
 {
-    NSLog(@"deleteTopic called");
-
-
     NSDictionary *topic= [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     NSString* topicID = [topic objectForKey:@"topic_id"];
 
     NSString *requestTopicString= [NSString stringWithFormat:@"%@/deleteusertopics.php?user_id=%@&topic_id=%@",TWIZZA_HOST_URL,self.userID,topicID];
-    NSLog(@"requestion delete string %@",requestTopicString);
     
     NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
-        NSLog(@"data is %@",data);
         [self performSelectorOnMainThread:@selector(requestDeleteTopic:) 
                                withObject:data waitUntilDone:YES];
         NSLog(@"complete delete topic");
@@ -134,11 +125,8 @@
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete)
 	{
-        NSLog(@"call deleteTopic");
         [self deleteTopic];
         
-        NSLog(@"%d",indexPath.row);
-        NSLog(@"%@",self.topicList);
 		[self.topicList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}   
