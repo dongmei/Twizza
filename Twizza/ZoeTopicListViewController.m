@@ -32,6 +32,23 @@
 }
 
 #pragma mark - View lifecycle
+-(IBAction)refresh:(id)sender{
+    //get topic list of this user_name
+    self.userID = [ZoeTwitterAccount getSharedAccount].twitterID;
+    NSString *requestTopicString= [NSString stringWithFormat:@"%@/getusertopics.php?user_id=%@",TWIZZA_HOST_URL,self.userID];
+    
+    NSURL *requestTopicURL =[NSURL URLWithString:requestTopicString];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestTopicURL];
+        [self performSelectorOnMainThread:@selector(fetchData:) 
+                               withObject:data waitUntilDone:YES];
+        NSLog(@"complete fetch data");
+    });
+    
+}
+    
+    
 - (id)jsonPostRequest:(NSData *)jsonPostRequestData
 {
     NSString *requestString = [NSString stringWithFormat:@"%@/sendweight.php",TWIZZA_HOST_URL]; 

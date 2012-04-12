@@ -95,20 +95,38 @@
     
     //NSString *keywordRaw = @"iOS 5";
     NSArray *keywordArray = [self.topic objectForKey:@"topic_keyword"];
-    NSString *keywordRaw = [keywordArray objectAtIndex:0];
+    NSString *keywordRaw;
+    if (keywordArray.count == 0) {
+      keywordRaw = @"";  
+    }
+    else
+    keywordRaw = [keywordArray objectAtIndex:0];
+    
+    NSArray *sourceArray = [self.topic objectForKey:@"twitter_source"];
     
     for (int i = 1 ; i < keywordArray.count; i++) {
         NSString *trimmedString = [[keywordArray objectAtIndex:i] stringByTrimmingCharactersInSet:
                                    [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         keywordRaw = [keywordRaw stringByAppendingFormat:@" OR %@",trimmedString];
     }
+
+    for (int i = 0 ; i < sourceArray.count; i++) {
+        NSString *trimmedString = [[sourceArray objectAtIndex:i] stringByTrimmingCharactersInSet:
+                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        keywordRaw = [keywordRaw stringByAppendingFormat:@" OR from%@%@",@":",trimmedString];
+    }
+    
     
     NSString *keywordEncoded = [keywordRaw stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *requestString= [NSString stringWithFormat:@"%@%@&with_twitter_user_id=true&result_type=recent",TWITTER_SERACH_WITHOUT_Q,keywordEncoded];
+    NSString *requestString= [NSString stringWithFormat:@"%@%@&with_twitter_user_id=true&result_type=mixed",TWITTER_SERACH_WITHOUT_Q,keywordEncoded];
     
     TWRequest *request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:
                                                          requestString] 
                                              parameters:nil requestMethod:TWRequestMethodGET];
+    
+    NSLog(@"URL string is %@",[NSURL URLWithString:
+                               requestString]);
+    
     [request setAccount:[ZoeTwitterAccount getSharedAccount].account]; 
 
     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)

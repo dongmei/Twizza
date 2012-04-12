@@ -75,6 +75,10 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(IBAction)cancelBtnDidPressed:(id)sender{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark - View lifecycle
 - (void)viewWillAppear:(BOOL)animated
 {

@@ -26,8 +26,11 @@
 @property (strong, nonatomic) NSString *userID;
 @property (nonatomic, retain) NSURLConnection * connection; 
 
+
 - (void)deleteTopic;
 - (void)updateWeight:(NSString *)topidID;
 - (void)requestDeleteTopic:(NSData *)responseData;
+
+-(IBAction)refresh:(id) sender;
 
 @end

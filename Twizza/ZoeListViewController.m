@@ -111,6 +111,7 @@
 {
     [super viewDidLoad];
     NSLog(@"%@",TWIZZA_HOST_URL);
+    self.timeline = [NSArray array];
 }
 
 - (void)viewDidUnload
@@ -215,6 +216,9 @@
     NSData *profileImageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     [cellPofileImage setImage:[UIImage imageWithData:profileImageData]];
     
+    
+    //cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, 200);
+    
     return cell;
 }
 
@@ -222,7 +226,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    //NSLog(@"%d",indexPath.row);
+    NSLog(@"%d",((NSArray*)self.timeline).count);
+    //UITableViewCell *cell = [(UITableView*)self.view cellForRowAtIndexPath:indexPath];
+    
+    //UILabel *cellContentLabel = (UILabel *)[cell viewWithTag:2];
+    
+    if (((NSArray*)self.timeline).count > 0){
+         NSDictionary *tweet = [self.timeline objectAtIndex:[indexPath row]];
+         NSString* t = [tweet objectForKey:@"text"];
+        return t.length * 1.2 + 20;
+    }
+    return 140;
 }
 
 

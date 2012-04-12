@@ -21,5 +21,6 @@
 @property (nonatomic, retain) NSURLConnection * connection; 
 
 -(IBAction)addNewTopic:(id) sender;
+-(IBAction)cancelBtnDidPressed:(id)sender;
 
 @end
