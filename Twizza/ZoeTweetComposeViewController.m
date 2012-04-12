@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 12/23/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Z&Z. All rights reserved.
 //
 
 #import "ZoeTweetComposeViewController.h"
@@ -21,11 +21,6 @@
 @synthesize textView;
 @synthesize choosePhoto = _choosePhoto;
 
-//@synthesize closeButton;
-//@synthesize sendButton;
-//@synthesize titleView;
-
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -38,7 +33,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //self.titleView.title = [NSString stringWithFormat:@"Compose Tweet"];    
     [textView setKeyboardType:UIKeyboardTypeTwitter];
     [textView becomeFirstResponder];
 }
@@ -50,17 +44,6 @@
     //self.navigationController.navigationItem.leftBarButtonItem.title = @"Cancel";
 }
 
-/*
-- (void)viewDidUnload
-{
-    [self setCloseButton:nil];
-    [self setSendButton:nil];
-    [self setTextView:nil];
-    [self setTitleView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -74,13 +57,6 @@
 	picker.delegate = self;
     
     picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-	
-    /*
-	if((UIButton *) sender == _choosePhoto) {
-		picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-	} else {
-		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	}*/
 	
 	[self presentModalViewController:picker animated:YES];
 }
@@ -106,7 +82,6 @@
                                 requestMethod:TWRequestMethodPOST];
 
     [requestSend setAccount:[ZoeTwitterAccount getSharedAccount].account]; 
-    //NSLog(@"%@", self.image);
     
     if (self.image != NULL) {
         //add image
@@ -118,10 +93,6 @@
     } 
     
     [requestSend performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        //NSDictionary *dict = 
-		//(NSDictionary *)[NSJSONSerialization 
-        // JSONObjectWithData:responseData options:0 error:nil];
-        //NSLog(@"%@", dict);
         NSLog(@"Twitter response, HTTP response: %i", [urlResponse statusCode]);
         if ([urlResponse statusCode] == 200) {
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -141,13 +112,6 @@
 	[picker dismissModalViewControllerAnimated:YES];
     [self.imageView setImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
 }
-
-
-/*
-- (IBAction)cancel:(id)sender
-{
-    [self.tweetComposeDelegate tweetComposeViewController:self didFinishWithResult:TweetComposeResultCancelled];
-}*/
 
 
 @end

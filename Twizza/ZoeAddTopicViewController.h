@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 2/15/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *addedTopic;
 @property (strong, nonatomic) IBOutlet UITextField *addedKeywords;
+@property (strong, nonatomic) IBOutlet UITextField *addedSource;
 @property (nonatomic, retain) NSURLConnection * connection; 
 
 -(IBAction)addNewTopic:(id) sender;

@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 3/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 #import "ZoeAccountGateway.h"
@@ -60,8 +60,6 @@
 
 
 -(void)viewDidAppear:(BOOL)animated{
-    //[self performSegueWithIdentifier:@"showtab1" sender:self];
-        
     NSDictionary *userInfo = [self getDictionary:@"accountList"];
     int i;
     BOOL find = FALSE;

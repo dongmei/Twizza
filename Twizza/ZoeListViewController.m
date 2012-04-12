@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 12/17/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Z&Z. All rights reserved.
 //
 
 #import "ZoeListViewController.h"
@@ -95,8 +95,6 @@
     
     
     if ([[segue identifier] isEqualToString:@"TweetView"]) {        
-        //ZoeTweetViewController *vc = [segue destinationViewController];
-               
         NSDictionary *dic = [self.timeline objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         [ZoeTweet setTweet:dic];
         NSLog(@"dic is %@",dic);
@@ -216,9 +214,6 @@
     NSData *profileImageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     [cellPofileImage setImage:[UIImage imageWithData:profileImageData]];
     
-    
-    //cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, 200);
-    
     return cell;
 }
 
@@ -226,11 +221,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"%d",indexPath.row);
-    NSLog(@"%d",((NSArray*)self.timeline).count);
-    //UITableViewCell *cell = [(UITableView*)self.view cellForRowAtIndexPath:indexPath];
-    
-    //UILabel *cellContentLabel = (UILabel *)[cell viewWithTag:2];
+    //NSLog(@"%d",((NSArray*)self.timeline).count);
     
     if (((NSArray*)self.timeline).count > 0){
          NSDictionary *tweet = [self.timeline objectAtIndex:[indexPath row]];

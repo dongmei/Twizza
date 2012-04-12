@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 3/17/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 #import "ZoeTweetViewController.h"
@@ -21,14 +21,6 @@
 }
 
 #pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

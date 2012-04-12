@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 2/15/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 #import "ZoeAddTopicViewController.h"
@@ -14,7 +14,7 @@
 
 @implementation ZoeAddTopicViewController
 
-@synthesize addedTopic,addedKeywords;
+@synthesize addedTopic,addedKeywords,addedSource;
 @synthesize connection = _connection;
 
 - (void)didReceiveMemoryWarning
@@ -57,11 +57,12 @@
 -(IBAction)addNewTopic:(id) sender {
     [sender resignFirstResponder];
     
-    NSString *topicName,*keywordString;
+    NSString *topicName,*keywordString,*sourceString;
     topicName = self.addedTopic.text;
     keywordString = self.addedKeywords.text;
+    sourceString = self.addedSource.text;
     
-    NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topicName",keywordString,@"keywordString",[ZoeTwitterAccount getSharedAccount].twitterID,@"userID",nil];
+    NSDictionary* newTopic = [NSDictionary dictionaryWithObjectsAndKeys:topicName,@"topicName",keywordString,@"keywordString",sourceString,@"sourceString",[ZoeTwitterAccount getSharedAccount].twitterID,@"userID",nil];
     
     if ([NSJSONSerialization isValidJSONObject:newTopic]) {
         NSError *error=nil;
@@ -82,25 +83,10 @@
 #pragma mark - View lifecycle
 - (void)viewWillAppear:(BOOL)animated
 {
-    //self.titleView.title = [NSString stringWithFormat:@"Add New Topic"];    
     [addedTopic setKeyboardType:UIKeyboardTypeTwitter];
     [addedTopic becomeFirstResponder];
 }
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
 
 - (void)viewDidUnload
 {

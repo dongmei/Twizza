@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 12/23/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Z&Z. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -34,7 +34,6 @@ typedef enum TweetComposeResult TweetComposeResult;
 }
 
 @property (strong, nonatomic) IBOutlet UITextView *textView;
-//@property (strong, nonatomic) IBOutlet UINavigationItem *titleView;
 @property (nonatomic, assign) id<ZoeTweetComposeViewControllerDelegate> tweetComposeDelegate; 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UIButton * choosePhoto;

@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 3/17/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 #import "ZoeTweet.h"
@@ -38,17 +38,20 @@ ZoeTweet* sharedTweet_ = nil;
 }
 
 -(NSString*)getUserName{
-    if ([tweet valueForKey:@"user.name"]!=NULL) {
-    return [tweet valueForKeyPath:@"user.name"];
+    if ([self.tweet valueForKeyPath:@"user.name"]!=NULL) {
+        return [self.tweet valueForKeyPath:@"user.name"];
     }
-    else return [tweet valueForKey:@"from_user"];
+    else 
+    {
+        return [self.tweet valueForKey:@"from_user_name"];
+    }
 }
 
 -(NSString*)getTwitterID{
     if ([self.tweet objectForKey:@"id"]!=NULL) {
         return (NSString *)[self.tweet objectForKey:@"id"];
     }
-    else return [tweet valueForKey:@"from_user_id_str"];
+    else return [self.tweet valueForKey:@"from_user_id_str"];
 }
 
 -(NSString*)getTweetText{

@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 2/22/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 #import "ZoeTweetSearchViewController.h"
@@ -46,11 +46,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    //id tweets = [self.tweetList objectForKey:@"results"];
     id tweet = [self.tweetList objectAtIndex:indexPath.row];
-    
-    //id tweet = [self.tweetList objectAtIndex:[indexPath row]];
-    
+
     //Use viewWithTag to display tweets
     UILabel *cellNameLabel = (UILabel *)[cell viewWithTag:1];
     //[cellNameLabel setText:[tweet valueForKeyPath:@"user.name"]];
@@ -69,10 +66,16 @@
 }
 
 #pragma mark - Table view delegate
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    //NSLog(@"%d",((NSArray*)self.tweetList).count);
+    
+    if (((NSArray*)self.tweetList).count > 0){
+        NSDictionary *tweet = [self.tweetList objectAtIndex:[indexPath row]];
+        NSString* t = [tweet objectForKey:@"text"];
+        return t.length * 1.2 + 20;
+    }
+    return 140;
 }
 
 
@@ -92,8 +95,6 @@
 - (void)fetchData
 {
     // Do a simple search, using the Twitter API
-    
-    //NSString *keywordRaw = @"iOS 5";
     NSArray *keywordArray = [self.topic objectForKey:@"topic_keyword"];
     NSString *keywordRaw;
     if (keywordArray.count == 0) {
@@ -166,14 +167,6 @@
 }
 
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -198,13 +191,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"TweetView"]) {        
-        //ZoeTweetViewController *vc = [segue destinationViewController];
-        
-        //NSLog(@"row is %d",[[self.tableView indexPathForSelectedRow] row]);
-       // NSLog(@"tweet is %@",[[self.tweetList objectForKey:@"results"] objectAtIndex:[[self.tableView indexPathForSelectedRow] row]]);
         NSDictionary *dic = [self.tweetList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         [ZoeTweet setTweet:dic];
-        //NSLog(@"Topic, set zoeTweet user name is %@",[[ZoeTweet getSharedTweet]getUserName]);
+        NSLog(@"%@",dic);
     }
 }
 

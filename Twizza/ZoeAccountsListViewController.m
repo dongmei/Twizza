@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 12/17/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Z&Z. All rights reserved.
 //
 
 #import "ZoeAccountsListViewController.h"
@@ -61,7 +61,6 @@
             [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) {
                 if(granted) {
                     self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];  
-                    //NSLog(@"account is %@",[self.accounts objectAtIndex:0]);
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData]; 
                     });
@@ -201,7 +200,6 @@
         NSString *tID = [_userIdCache objectForKey:account.username];
         NSLog(@"twitter id is %@",_userIdCache);
         [ZoeTwitterAccount setACAccount:account twitterID:tID];
-        //[ZoeTwitterAccount setACAccount:account twitterID:@"71209705"];
     }
 }
 

@@ -3,7 +3,7 @@
 //  Twizza
 //
 //  Created by Dongmei Hu on 2/11/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Z&Z. All rights reserved.
 //
 
 
@@ -27,8 +27,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+
 }
 
 #pragma mark - View lifecycle
@@ -123,6 +122,7 @@
 {
     NSDictionary *topic= [self.topicList objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
     NSString* topicID = [topic objectForKey:@"topic_id"];
+    NSLog(@"delete %@",topicID);
 
     NSString *requestTopicString= [NSString stringWithFormat:@"%@/deleteusertopics.php?user_id=%@&topic_id=%@",TWIZZA_HOST_URL,self.userID,topicID];
     
@@ -218,15 +218,6 @@
     }
 }
 
-
-
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
